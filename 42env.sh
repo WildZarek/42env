@@ -236,7 +236,7 @@ if [ -f "$KEYMAPS_LUA_SRC" ]; then
         cp "$KEYMAPS_LUA_SRC" "$KEYMAPS_LUA_DEST"
         sleep 1
         print_ok
-    else:
+    else
         print_warning "No se encontró el directorio de configuración de nvim. Creando los directorios..."
         mkdir -p $KEYMAPS_LUA_DEST
         sleep 1

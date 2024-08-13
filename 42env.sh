@@ -140,7 +140,7 @@ else
 fi
 
 ZSH_PLUGIN1_PATH="$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
-if [ ! -d ZSH_PLUGIN1_PATH ]; then
+if [ ! -d $ZSH_PLUGIN1_PATH ]; then
     print_info "Instalando plugin ${COLOR_YELLOW}zsh-autosuggestions${COLOR_WHITE}..."
     git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_PLUGIN1_PATH
     sleep 2
@@ -150,7 +150,7 @@ else
 fi
 
 ZSH_PLUGIN2_PATH="$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
-if [ ! -d ZSH_PLUGIN2_PATH ]; then
+if [ ! -d $ZSH_PLUGIN2_PATH ]; then
     print_info "Instalando plugin ${COLOR_YELLOW}zsh-syntax-highlighting${COLOR_WHITE}..."
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_PLUGIN2_PATH
     sleep 2
@@ -297,13 +297,17 @@ fi
 echo ""
 
 print_installed "Todos los programas necesarios han sido instalados."
-rm ./lazygit
+
+if [ -d ./lazygit ]; then
+    rm ./lazygit
+fi
 
 echo ""
 echo ""
 
 sleep 1
-print_installed "[ATENCIÓN] El sistema se reiniciará para aplicar todos los cambios. Después del reinicio, ejecuta 'nvim' para que la configuración de Neovim se complete."
+print_installed "[${COLOR_RED}ATENCIÓN${COLOR_WHITE}] El sistema se reiniciará para aplicar todos los cambios."
+print_info "Después del reinicio, ejecuta 'nvim' para que la configuración de Neovim se complete."
 
 echo ""
 echo ""

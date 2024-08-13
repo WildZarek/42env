@@ -86,7 +86,7 @@ check_and_install "pip3" "python3-pip"
 check_and_install "gcc" "gcc"
 check_and_install "make" "make"
 check_and_install "rg" "ripgrep"
-check_and_install "fd" "fd-find"
+check_and_install "fdfind" "fd-find"
 check_and_install "nvim" "neovim"
 check_and_install "luarocks" "luarocks"
 
@@ -98,6 +98,10 @@ check_and_install "luarocks" "luarocks"
 #check_and_install "yarn" "yarn"
 
 sleep 3
+
+# Fix for 'fdfind' command in Ubuntu and Debian
+export PATH="$HOME/.local/bin:$PATH"
+ln -s $(which fdfind) ~/.local/bin/fd
 
 if [ "$SHELL" != "$(which zsh)" ]; then
     print_info "Configurando ${COLOR_YELLOW}zsh${COLOR_WHITE} como shell por defecto..."
@@ -194,7 +198,7 @@ if ! fc-list | grep -q "$FONT_NAME"; then
     sudo fc-cache -f -v > /dev/null 2>&1
     print_ok
 else
-    print_installed "${COLOR_YELLOW}Hack Nerd Font${COLOR_WHITE} ya está instalada."
+    print_installed "La fuente ${COLOR_YELLOW}Hack Nerd Font${COLOR_WHITE} ya está instalada."
 fi
 
 VIMRC_SRC="./files/.vimrc"
@@ -207,7 +211,7 @@ if [ -f $VIMRC_SRC ]; then
         sleep 1
         print_ok
     else
-        print_installed "Archivo ${COLOR_YELLOW}.vimrc${COLOR_WHITE} ya existente."
+        print_installed "Archivo ${COLOR_YELLOW}.vimrc${COLOR_WHITE} ya existente. Ignorando..."
         print_info "Configurando variables para el header de 42..."
         echo -e "let g:user42 = '${INTRAUSER}'" >> $VIMRC_SRC
         echo -e "let g:mail42 = '${INTRAUSER}@student.42malaga.com'" >> $VIMRC_SRC
@@ -238,7 +242,7 @@ if [ -f "$KEYMAPS_LUA_SRC" ]; then
         print_ok
     fi
 else
-        print_warning "No se encontró el archivo ${COLOR_YELLOW}keymaps.lua${COLOR_WHITE} en la ruta actual."
+    print_warning "No se encontró el archivo ${COLOR_YELLOW}keymaps.lua${COLOR_WHITE} en la ruta actual."
 fi
 
 FORMATTER_42_SRC="./files/c_formatter_42.vim"
@@ -264,25 +268,31 @@ else
     print_warning "No se encontró el archivo ${COLOR_YELLOW}c_formatter_42.vim${COLOR_WHITE} en la ruta actual."
 fi
 
-print_info "Instalando ${COLOR_YELLOW}LazyGit${COLOR_WHITE}..."
-LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+if [ ! $(command -v lazygit) ]; then
+    print_info "Instalando ${COLOR_YELLOW}LazyGit${COLOR_WHITE}..."
+    LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+    curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz" > /dev/null 2>&1
+    tar xf lazygit.tar.gz lazygit > /dev/null 2>&1
+    sudo install lazygit /usr/local/bin > /dev/null 2>&1
+    rm lazygit.tar.gz > /dev/null 2>&1
+    sleep 1
+    print_ok
+else
+    print_installed "Paquete ${COLOR_YELLOW}LazyGit${COLOR_WHITE} ya está instalado."
+fi
 
-curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz" > /dev/null 2>&1
-tar xf lazygit.tar.gz lazygit > /dev/null 2>&1
-sudo install lazygit /usr/local/bin > /dev/null 2>&1
-rm lazygit.tar.gz > /dev/null 2>&1
-sleep 1
-print_ok
-
-print_info "Instalando ${COLOR_YELLOW}LSD${COLOR_WHITE}..."
-LSD_URL="https://github.com/lsd-rs/lsd/releases/download/v1.1.2/lsd-musl_1.1.2_amd64.deb"
-LSD_DEB="lsd-musl_1.1.2_amd64.deb"
-
-curl -Lo $LSD_DEB $LSD_URL > /dev/null 2>&1
-sudo dpkg -i $LSD_DEB > /dev/null 2>&1
-rm $LSD_DEB > /dev/null 2>&1
-sleep 1
-print_ok
+if [ ! $(command -v lsd) ]; then
+    print_info "Instalando ${COLOR_YELLOW}LSD${COLOR_WHITE}..."
+    LSD_URL="https://github.com/lsd-rs/lsd/releases/download/v1.1.2/lsd-musl_1.1.2_amd64.deb"
+    LSD_DEB="lsd-musl_1.1.2_amd64.deb"
+    curl -Lo $LSD_DEB $LSD_URL > /dev/null 2>&1
+    sudo dpkg -i $LSD_DEB > /dev/null 2>&1
+    rm $LSD_DEB > /dev/null 2>&1
+    sleep 1
+    print_ok
+else
+    print_installed "Paquete ${COLOR_YELLOW}LSD${COLOR_WHITE} ya está instalado."
+fi
 
 echo ""
 

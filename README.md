@@ -9,11 +9,13 @@
 
 Automatiza la instalación y configuración del entorno básico necesario para programar en el Cursus de 42.
 Testeado en las siguientes distribuciones:
+
 |----------------------------------------------------------|---------------|
 | Distribución                                             | Codename      |
 | ----------------                                         | ------------- |
 | [Ubuntu 22.04 LTS](https://releases.ubuntu.com/jammy/)   | Jammy         |
 | [Debian 12 LTS](https://www.debian.org/releases/stable/) | Bookworm      |
+| --- | --- |
 
 <!-- Índice -->
 # Índice

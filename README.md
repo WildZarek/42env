@@ -8,6 +8,7 @@
 
 
 Automatiza la instalación y configuración del entorno básico necesario para programar en el Cursus de 42.
+
 Testeado en las siguientes distribuciones:
 
 | Distribución                                             | Codename      |
@@ -22,12 +23,9 @@ Testeado en las siguientes distribuciones:
 2. [Recomendaciones](#recomendaciones)
 3. [Instalación](#instalación)
 4. [Durante la ejecución](#durante-la-ejecución)
-5. [LazyVim](#lazyvim)
-    - [Uso básico de LazyVim](#uso-básico-de-lazyvim)
-    - [Pestañas en LazyVim](#pestañas-en-lazyvim)
-6. [Extras](#extras)
+5. [Extras](#extras)
     - [LSD (LSDeluxe)](#lsd-lsdeluxe)
-7. [En proceso...](#en-proceso)
+6. [En proceso...](#en-proceso)
 
 ## Software
 

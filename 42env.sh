@@ -3,6 +3,7 @@
 COLOR_YELLOW="\e[33m"
 COLOR_MAGENTA="\e[35m"
 COLOR_CYAN="\e[36m"
+COLOR_GREY="\e[90m"
 COLOR_RED="\e[91m"
 COLOR_GREEN="\e[92m"
 COLOR_BLUE="\e[94m"
@@ -10,9 +11,9 @@ COLOR_WHITE="\e[97m"
 COLOR_RESET="\e[0m"
 
 banner() {
-    echo -e "${COLOR_MAGENTA}"
+    echo -e "${COLOR_GREY}"
     cat << "EOF"
-    
+
   ┌─────────────────────────────────────────────────────────────┐
   │       ██╗  ██╗██████╗     ███████╗███╗   ██╗██╗   ██╗       │
   │       ██║  ██║╚════██╗    ██╔════╝████╗  ██║██║   ██║       │
@@ -23,11 +24,11 @@ banner() {
   └─────────────────────────────────────────────────────────────┘
 EOF
 echo -e "${COLOR_RESET}${COLOR_WHITE}"
-echo -e ">> 42ENV | 42 environment configuration script."
+echo -e ">> 42ENV | 42 Environment Configuration Script"
 echo ""
 echo -e ">> Si te sirvió este script, dale '★ Star' en el repositorio. ¡Gracias!"
-echo -e ">> ${COLOR_BLUE}https://github.com/WildZarek/42env${COLOR_RESET}"
-echo -e ">> ${COLOR_WHITE}forked from: ${COLOR_BLUE}https://github.com/4ndymcfly/42env${COLOR_RESET}"
+echo -e ">> ${COLOR_BLUE}https://github.com/WildZarek/42env${COLOR_WHITE}"
+echo -e ">> forked from: ${COLOR_BLUE}https://github.com/4ndymcfly/42env${COLOR_RESET}"
 echo ""
 sleep 3
 }
@@ -40,7 +41,7 @@ print_info() {
 }
 
 print_installed() {
-    echo -e "${COLOR_WHITE}[${COLOR_CYAN}i${COLOR_WHITE}] $1${COLOR_RESET}"
+    echo -e "${COLOR_WHITE}[${COLOR_MAGENTA}i${COLOR_WHITE}] $1${COLOR_RESET}"
 }
 
 print_warning() {
@@ -54,9 +55,9 @@ print_ok() {
 sudo -v
 while true; do sudo -n true; sleep 60; sudo -v; done 2>/dev/null &
 
-print_info "Escribe tu usuario de la Intra 42:"
+print_info "Escribe tu usuario de la Intra 42: "
 read USER
-MAIL="${USER}@student.42malaga.com"
+42USER="${USER}"
 
 check_and_install() {
     if ! command -v $1 &> /dev/null
@@ -130,15 +131,25 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 sleep 2
 print_ok
 
-print_info "Instalando plugin ${COLOR_YELLOW}zsh-autosuggestions${COLOR_WHITE}..."
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-sleep 2
-print_ok
+ZSH_PLUGIN1_PATH="$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestion"
+if [ ! -d ZSH_PLUGIN1_PATH ]
+    print_info "Instalando plugin ${COLOR_YELLOW}zsh-autosuggestions${COLOR_WHITE}..."
+    git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_PLUGIN1_PATH
+    sleep 2
+    print_ok
+else
+    print_installed "Plugin ${COLOR_YELLOW}zsh-autosuggestions${COLOR_WHITE} ya está instalado."
+fi
 
-print_info "Instalando plugin ${COLOR_YELLOW}zsh-syntax-highlighting${COLOR_WHITE}..."
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-sleep 2
-print_ok
+ZSH_PLUGIN2_PATH="$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+if [ ! -d ZSH_PLUGIN2_PATH ]
+    print_info "Instalando plugin ${COLOR_YELLOW}zsh-syntax-highlighting${COLOR_WHITE}..."
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_PLUGIN2_PATH
+    sleep 2
+    print_ok
+else
+    print_installed "Plugin ${COLOR_YELLOW}zsh-syntax-highlighting${COLOR_WHITE} ya está instalado."
+fi
 
 if ! pip3 show norminette &> /dev/null
 then
@@ -162,7 +173,7 @@ fi
 
 if ! pip3 show neovim &> /dev/null
 then
-    print_info "Librería ${COLOR_WHITE}neovim${COLOR_WHITE} para Python no está instalada. Instalando..."
+    print_info "Librería ${COLOR_YELLOW}neovim${COLOR_WHITE} para Python no está instalada. Instalando..."
     pip3 install neovim > /dev/null 2>&1
     sleep 2
     print_ok
@@ -182,18 +193,42 @@ else
     print_installed "${COLOR_YELLOW}Hack Nerd Font${COLOR_WHITE} ya está instalada."
 fi
 
+VIMRC_SRC="./files/.vimrc"
+if [ -f $VIMRC_SRC ]; then
+    if [ ! -f $HOME/.vimrc ]; then
+        print_info "Copiando archivo ${COLOR_YELLOW}.vimrc${COLOR_WHITE} al home del usuario..."
+        echo -e "let g:user42 = '${42USER}'" >> $VIMRC_SRC
+        echo -e "let g:mail42 = '${42USER}@student.42malaga.com'" >> $VIMRC_SRC
+        cp "$VIMSRC" "$HOME"
+        sleep 1
+        print_ok
+    else
+        print_installed "Archivo ${COLOR_YELLOW}.vimrc${COLOR_WHITE} ya existente."
+        print_info "Configurando variables para el header de 42..."
+        echo -e "let g:user42 = '${42USER}'" >> $VIMRC_SRC
+        echo -e "let g:mail42 = '${42USER}@student.42malaga.com'" >> $VIMRC_SRC
+        sleep 1
+        print_ok
+    fi
+else
+    print_warning "No se encontró el archivo ${COLOR_YELLOW}.vimrc${COLOR_WHITE} en la ruta actual."
+fi
+
 KEYMAPS_LUA_SRC="./files/keymaps.lua"
 KEYMAPS_LUA_DEST="$HOME/.config/nvim/lua/config/"
 
 if [ -f "$KEYMAPS_LUA_SRC" ]; then
-    print_info "Copiando archivo ${COLOR_YELLOW}keymaps.lua${COLOR_WHITE} al directorio de configuración de nvim..."
     if [ -d $KEYMAPS_LUA_DEST ]; then
+        print_info "Copiando archivo ${COLOR_YELLOW}keymaps.lua${COLOR_WHITE} al directorio de configuración de nvim..."
         cp "$KEYMAPS_LUA_SRC" "$KEYMAPS_LUA_DEST"
         sleep 1
         print_ok
     else:
-        print_error "No se encontró el directorio de configuración de nvim. Creando los directorios..."
+        print_warning "No se encontró el directorio de configuración de nvim. Creando los directorios..."
         mkdir -p $KEYMAPS_LUA_DEST
+        sleep 1
+        print_ok
+        print_info "Copiando archivo ${COLOR_YELLOW}keymaps.lua${COLOR_WHITE} al directorio de configuración de nvim..."
         cp "$KEYMAPS_LUA_SRC" "$KEYMAPS_LUA_DEST"
         sleep 1
         print_ok
@@ -206,14 +241,17 @@ FORMATTER_42_SRC="./files/c_formatter_42.vim"
 FORMATTER_42_DEST="$HOME/.config/nvim/lua/plugins/"
 
 if [ -f "$FORMATTER_42_SRC" ]; then
-    print_info "Copiando plugin ${COLOR_YELLOW}c_formatter_42.vim${COLOR_WHITE} al directorio de plugins de nvim..."
     if [ -d $FORMATTER_42_DEST ]; then
+        print_info "Copiando plugin ${COLOR_YELLOW}c_formatter_42.vim${COLOR_WHITE} al directorio de plugins de nvim..."
         cp "$FORMATTER_42_SRC" "$FORMATTER_42_DEST"
         sleep 1
         print_ok
     else
-        print_error "No se encontró el directorio de plugins de nvim. Creando los directorios..."
+        print_warning "No se encontró el directorio de plugins de nvim. Creando los directorios..."
         mkdir -p $FORMATTER_42_DEST
+        sleep 1
+        print_ok
+        print_info "Copiando plugin ${COLOR_YELLOW}c_formatter_42.vim${COLOR_WHITE} al directorio de plugins de nvim..."
         cp "$FORMATTER_42_SRC" "$FORMATTER_42_DEST"
         sleep 1
         print_ok

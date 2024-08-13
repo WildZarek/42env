@@ -67,7 +67,7 @@ Ahora, asigna permisos de ejecución al script y ejecútalo. Se recomienda tener
 chmod +x 42env.sh ; ./42env.sh
 ```
 <div align="center">
-  <img src="assets/002_install_log.png" alt="install_log">
+  <img src="assets/001_install_log.png" alt="install_log">
 </div>
 
 ## Durante la ejecución

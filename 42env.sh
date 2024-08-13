@@ -101,7 +101,8 @@ sleep 3
 
 # Fix for 'fdfind' command in Ubuntu and Debian
 export PATH="$HOME/.local/bin:$PATH"
-ln -s $(which fdfind) ~/.local/bin/fd
+if [ ! -f "~/.local/bin/fd" ]; then
+    ln -s $(which fdfind) ~/.local/bin/fd
 
 if [ "$SHELL" != "$(which zsh)" ]; then
     print_info "Configurando ${COLOR_YELLOW}zsh${COLOR_WHITE} como shell por defecto..."
@@ -302,7 +303,6 @@ if [ -d ./lazygit ]; then
     rm ./lazygit
 fi
 
-echo ""
 echo ""
 
 sleep 1

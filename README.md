@@ -55,7 +55,7 @@ Este script está pensado para uso en nuestro ordenador personal. Pronto publica
 ## Instalación
 
 <div align="center">
-  <img src="img/001_running.png" alt="script running">
+  <img src="assets/000_running.png" alt="script running">
 </div>
 
 Primero descargamos el repositorio y entramos en la carpeta 42env del repositorio clonado.
@@ -67,7 +67,7 @@ Ahora, asigna permisos de ejecución al script y ejecútalo. Se recomienda tener
 chmod +x 42env.sh ; ./42env.sh
 ```
 <div align="center">
-  <img src="img/002_install_log.png" alt="install_log">
+  <img src="assets/002_install_log.png" alt="install_log">
 </div>
 
 ## Durante la ejecución
@@ -91,13 +91,13 @@ El alias `ll` equivale a:
 ```bash
 /usr/bin/lsd -lha --group-dirs=first
 ```
-<img src=img/018_lsd_example.png alt="header_logo" align="center">
+<img src=assets/018_lsd_example.png alt="header_logo" align="center">
 
 Si por más comodidad queremos ver los permisos de los archivos y carpetas en octal lo haremos con `llo` que es un alias de:
 ```bash
 /usr/bin/lsd -lha --group-dirs=first --permission octal
 ```
-<img src=img/019_lsd_example_octal.png alt="header_logo" align="center">
+<img src=assets/019_lsd_example_octal.png alt="header_logo" align="center">
 
 # LazyGit
 LazyGit es ideal para quienes prefieren usar la terminal pero quieren una forma más cómoda y rápida de manejar Git sin tener que escribir todos los comandos manualmente. Resulta especialmente útil para desarrolladores que trabajan con repositorios grandes y complejos, ya que facilita la visualización de los cambios y permite moverse ágilmente entre las distintas secciones del repositorio.
@@ -105,14 +105,14 @@ LazyGit es ideal para quienes prefieren usar la terminal pero quieren una forma 
 > ¡Por probarlo no pierdes nada!
 
 <div align="center">
-  <img src="img/021_lazy_git.png" alt="lazy_git">
+  <img src="assets/021_lazy_git.png" alt="lazy_git">
 </div>
 
 ## Terminal
 
 # Terminator
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/57ab74e0-e41a-45fe-b677-cb2799135ff4" alt="Kitty Logo" width="500"/>
+  <img src="https://avatars.githubusercontent.com/u/63008829" alt="Terminal Logo" width="512"/>
 </div>
 
 Kitty es una excelente opción si buscas un emulador de terminal que combine velocidad, personalización y funcionalidad avanzada, ideal para usuarios que desean aprovechar al máximo su entorno de trabajo en la terminal. Permite dividir la pantalla en varias terminales dentro de una misma ventana, facilitando la multitarea sin necesidad de usar múltiples ventanas. Kitty es un proyecto de código abierto con un desarrollo activo, lo que significa que recibe actualizaciones frecuentes y mejoras continuas.

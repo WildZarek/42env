@@ -57,7 +57,7 @@ while true; do sudo -n true; sleep 60; sudo -v; done 2>/dev/null &
 
 print_info "Escribe tu usuario de la Intra 42: "
 read USER
-42USER="${USER}"
+INTRAUSER="${USER}"
 
 check_and_install() {
     if ! command -v $1 &> /dev/null
@@ -126,10 +126,14 @@ else
 fi
 
 #Instalación de Oh-my-Zsh y plugins estilo fish
-print_info "Instalando ${COLOR_YELLOW}Oh-My-Zsh${COLOR_WHITE}..."
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-sleep 2
-print_ok
+if [ ! -d $ZSH ]; then
+    print_info "Instalando ${COLOR_YELLOW}Oh-My-Zsh${COLOR_WHITE}..."
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    sleep 2
+    print_ok
+else
+    print_installed "Paquete ${COLOR_YELLOW}Oh-My-Zsh${COLOR_WHITE} ya está instalado."
+fi
 
 ZSH_PLUGIN1_PATH="$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestion"
 if [ ! -d ZSH_PLUGIN1_PATH ]
@@ -197,16 +201,16 @@ VIMRC_SRC="./files/.vimrc"
 if [ -f $VIMRC_SRC ]; then
     if [ ! -f $HOME/.vimrc ]; then
         print_info "Copiando archivo ${COLOR_YELLOW}.vimrc${COLOR_WHITE} al home del usuario..."
-        echo -e "let g:user42 = '${42USER}'" >> $VIMRC_SRC
-        echo -e "let g:mail42 = '${42USER}@student.42malaga.com'" >> $VIMRC_SRC
+        echo -e "let g:user42 = '${INTRAUSER}'" >> $VIMRC_SRC
+        echo -e "let g:mail42 = '${INTRAUSER}@student.42malaga.com'" >> $VIMRC_SRC
         cp "$VIMSRC" "$HOME"
         sleep 1
         print_ok
     else
         print_installed "Archivo ${COLOR_YELLOW}.vimrc${COLOR_WHITE} ya existente."
         print_info "Configurando variables para el header de 42..."
-        echo -e "let g:user42 = '${42USER}'" >> $VIMRC_SRC
-        echo -e "let g:mail42 = '${42USER}@student.42malaga.com'" >> $VIMRC_SRC
+        echo -e "let g:user42 = '${INTRAUSER}'" >> $VIMRC_SRC
+        echo -e "let g:mail42 = '${INTRAUSER}@student.42malaga.com'" >> $VIMRC_SRC
         sleep 1
         print_ok
     fi

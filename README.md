@@ -1,26 +1,47 @@
 
 <div align="center">
   <img src="img/42_env_banner.png" alt="header_logo">
+  <p>42 ENVironment Configuration Script</p>
 </div>
 
-# 42 ENVironment Configuration Script
-Automatiza la instalación y configuración del entorno básico necesario para programar en el cursus de 42.
+# Descripción
+Automatiza la instalación y configuración del entorno básico necesario para programar en el Cursus de 42.
 |---|
-Testeado en [Ubuntu 22.04 LTS](https://releases.ubuntu.com/jammy/)
+Testeado en
+| Distribución     | Codename      |
+| ---------------- | ------------- |
+| [Ubuntu 22.04 LTS](https://releases.ubuntu.com/jammy/)  | Jammy         |
+| [Debian 12 LTS](https://www.debian.org/releases/stable/)| Bookworm      |
+
+<!-- Índice -->
+# Índice
+
+1. [Software](#software)
+2. [Recomendaciones](#recomendaciones)
+3. [Instalación](#instalación)
+4. [Durante la ejecución](#durante-la-ejecución)
+5. [LazyVim](#lazyvim)
+    - [Uso básico de LazyVim](#uso-básico-de-lazyvim)
+    - [Pestañas en LazyVim](#pestañas-en-lazyvim)
+6. [Extras](#extras)
+    - [LSD (LSDeluxe)](#lsd-lsdeluxe)
+7. [En proceso...](#en-proceso)
 
 ## Software
 
 Este script instala el siguiente software en el caso de que no esté instalado:
 
-- **LavyVim |** [Neovim setup powered](https://www.lazyvim.org/) + Plugins 42
-- **git |** [Git Fast Version Control](https://git-scm.com/doc)
-- **python3 |** [Python 3.10.2](https://docs.python.org/3.10/)
-- **pip3 |** [Package Installer for Python](https://pip.pypa.io/en/stable/)
 - **zsh |** [Shell ZSH](https://www.zsh.org/)
+- **oh-my-zsh |** [Oh-My-Zsh](https://ohmyz.sh/)
+- **zsh-autocompletions |** [Plugin zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+- **zsh-syntax-highlighting |** [Plugin zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+- **Terminator |** [Terminator](https://gnome-terminator.org/)
+- **git |** [Git Fast Version Control](https://git-scm.com/doc)
+- **python3 |** [Python 3.11.2](https://www.python.org/downloads/release/python-3112/)
+- **pip3 |** [Package Installer for Python](https://pip.pypa.io/en/stable/)
 - **ripgrep |** [Recursively searches by regex pattern](https://github.com/BurntSushi/ripgrep)
 - **fd / fd-find |** [Simply alternative to 'find'](https://github.com/sharkdp/fd)
 - **luarocks |** [Package manager for Lua modules](https://luarocks.org/)
-- **kitty |** [GPU based terminal emulator](https://sw.kovidgoyal.net/kitty/)
 - **nerd fonts |** [Iconic font aggregator, collection, and patcher](https://www.nerdfonts.com/) | Hack Nerd Font
 - **lsd |** [The next gen ls command](https://github.com/lsd-rs/lsd)
 - **lazygit |** [Simple terminal UI for git commands](https://github.com/jesseduffield/lazygit)
@@ -33,80 +54,39 @@ Este script está pensado para uso en nuestro ordenador personal. Pronto publica
 
 ## Instalación
 
-|<img src=img/001.png alt="header_logo" align="center">|
-|---|
+<div align="center">
+  <img src="img/001_running.png" alt="script running">
+</div>
 
 Primero descargamos el repositorio y entramos en la carpeta 42env del repositorio clonado.
 ```bash
-git clone https://github.com/4ndymcfly/42env.git ; cd 42env
+git clone https://github.com/WildZarek/42env.git ; cd 42env
 ```
-Ahora asignaremos permisos de ejecución al script y lo ejecutaremos. Se recomienda tener siempre maximizada la ventana de la shell.
+Ahora, asigna permisos de ejecución al script y ejecútalo. Se recomienda tener siempre maximizada la ventana de la shell.
 ```bash
 chmod +x 42env.sh ; ./42env.sh
 ```
-|<img src=img/002_install_log.png alt="header_logo" align="center">|
-|---|
+<div align="center">
+  <img src="img/002_install_log.png" alt="install_log">
+</div>
 
-#### Al ejecutar el script te pedirá tu usuario de la intra, escríbelo y pulsa `Enter`. Este usuario se usará para configurar el header de C.
+## Durante la ejecución
 
-Una vez que haya terminado todo el proceso. Pulsaremos la tecla `Enter` y se reiniciará el equipo.
-Una vez arrancado el sistema pulsaremos en el nuevo icono de 'kitty', maximizaremos la ventana y ejecutaremos 'nvim'.
+Al ejecutar el script, te pedirá tu usuario de la intra42; escríbelo y pulsa Enter. Este usuario se usará para configurar el header de C.
+
+Una vez que haya terminado todo el proceso, pulsa la tecla Enter y se reiniciará el equipo.
+
+Después de arrancar el sistema, abre Terminator, maximiza la ventana y ejecuta nvim.
 ```bash
 nvim
 ```
 
-Si no pulsamos con el ratón en la ventana de instalación, puede que el instalador nos pida que pulsemos una tecla. Si es tu caso pulsa la tecla `espacio`, la configuración continuará y acabará cuando nos solicite que pulsemos `enter`.
-
-|<img src=img/004_lazyvim_install.png alt="header_logo" align="center" width="500">|<img src=img/005_lazyvim_install_2.png alt="header_logo" align="center" width="500">|
-|---|---|
-
-Esperamos unos instantes y ya tenemos LazyVim preparado y con todo configurado para comenzar.
-
-|<img src=img/006_lazyvim_install_3.png alt="header_logo" align="center">|
-|---|
-
-Pulsamos `F4` y cerramos nvim (ya tenemos el acceso de teclado configurado).
-
-## LazyVim
-
-Si ejecutas `nvim` solamente, sin ningun nombre de archivo, accederás al menu principal de `LazyVim` que te permitirá realizar muchas acciones.
-
-<img src=img/007_lazyvim_install_4_end.png alt="header_logo" align="center">
-
-<img src=img/020_nvim_recent_files.png alt="header_logo" align="center">
-
-# Uso básico de LazyVim
-
-En LazyVim tenemos definidas 6 teclas principales para el uso diario:
-
-#### Tecla `F1` > Inserta el header de 42, hace un retorno de carro y pone el editor en modo `Insert`
-<img src=img/008_header_42.png alt="header_logo" align="center">
-
-#### Tecla `F2` > Formatea el código para presentarla a la norminette
-|<img src=img/010_example_code.png alt="header_logo" align="center" width="500">|<img src=img/012_fix_errors.png alt="header_logo" align="center" width="600">|
-|---|---|
-
-#### Tecla `F3` > Ejecuta norminette con las flags `-R CheckForbiddenSourceHeader`
-<img src=img/011_errors_norminette.png alt="header_logo" align="center">
-
-#### Tecla `F4` > Cierra la ventana activa / norminette / Cierra 'nvim' / Equivale a `:q`
-|<img src=img/013_norminette_ok.png alt="header_logo" align="center" width="600">|<img src=img/012_fix_errors.png alt="header_logo" align="center" width="600">|
-|---|---|
-
-#### Tecla `F5` > Guarda el documento activo / Equivale a `:w`
-
-#### Tecla `F6` > Abre-Cierra el explorador de archivos
-<img src=img/014_nvim_explorer.png alt="header_logo" align="center">
-
-#### Cada archivo que se abra lo hará en pestañas distintas, de este modo podremos tener varios archivos abiertos e ir cambianddo entre ellos de una manera muy cómoda.
-
-|Todos los demás atajos de `vim` funcionan igual.|
-|---|
+Si no pulsas con el ratón en la ventana de instalación, puede que el instalador te pida que pulses una tecla. Si es tu caso, pulsa la tecla `espacio`. La configuración continuará y finalizará cuando te solicite que pulses `enter`.
 
 ## Extras
 
 # LSD (LSDeluxe)
-La configuración incluye la instalación de LSD ya que considero que le da un plus y mayor legibilidad a la terminal aprovechando que hemos instalado las Nerd Fonts.
+La configuración incluye la instalación de LSD, ya que mejora la legibilidad en la terminal aprovechando las Nerd Fonts instaladas.
 El alias `ll` equivale a:
 ```bash
 /usr/bin/lsd -lha --group-dirs=first
@@ -120,13 +100,17 @@ Si por más comodidad queremos ver los permisos de los archivos y carpetas en oc
 <img src=img/019_lsd_example_octal.png alt="header_logo" align="center">
 
 # LazyGit
-Lazygit es ideal para quienes prefieren usar la terminal pero quieren una forma más cómoda y rápida de manejar Git sin tener que escribir todos los comandos manualmente. Resulta especialmente útil para desarrolladores que trabajan con repositorios grandes y complejos, ya que facilita la visualización de los cambios y permite moverse ágilmente entre las distintas secciones del repositorio.
-#### ¡Por probarlo no pierdes nada!
-<img src=img/021_lazy_git.png alt="header_logo" align="center">
+LazyGit es ideal para quienes prefieren usar la terminal pero quieren una forma más cómoda y rápida de manejar Git sin tener que escribir todos los comandos manualmente. Resulta especialmente útil para desarrolladores que trabajan con repositorios grandes y complejos, ya que facilita la visualización de los cambios y permite moverse ágilmente entre las distintas secciones del repositorio.
+
+> ¡Por probarlo no pierdes nada!
+
+<div align="center">
+  <img src="img/021_lazy_git.png" alt="lazy_git">
+</div>
 
 ## Terminal
 
-# Kitty
+# Terminator
 <div align="center">
   <img src="https://github.com/user-attachments/assets/57ab74e0-e41a-45fe-b677-cb2799135ff4" alt="Kitty Logo" width="500"/>
 </div>
@@ -157,20 +141,9 @@ Kitty es una excelente opción si buscas un emulador de terminal que combine vel
 | `Shift` + `Alt` + `→` | Desplazar una página hacia abajo |
 | `Ctrl` + `Shift` + `Z` | "Zoom" Alternar entre el diseño en mosaico o pantalla completa |
 
-### Imágenes de ejemplo:
+# En proceso...
+Próximamente intentaré publicar el proyecto con un configuracion alternativa para su ejecución en usuarios con permisos limitados. Toda mejora es bienvenida. Si te ha gustado y te ha resultado práctico, no olvides darme una estrella.
 
-<img src=img/017_kitty_example_01.png alt="header_logo" align="center">
+### Gracias!
 
-### Soporte para imágenes y gráficos:
-Kitty puede mostrar imágenes directamente en la terminal, lo que es útil para tareas que requieren visualización gráfica sin salir del entorno de línea de comandos. el alias creado es `picture`.
-```bash
-picture imagen.jpg
-```
-### Pestañas:
-<img src=img/017_kitty_example_02.png alt="header_logo" align="center">
-
-# Y en proceso...
-Próximamente intentaré publicar el proyecto con un configuracion alternativa para su ejecución en usuarios con permisos limitados. Toda mejora es bienvenida.
-#### Gracias!
-
-
+[Volver al índice](#índice)

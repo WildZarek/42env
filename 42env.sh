@@ -85,7 +85,7 @@ check_and_install "python3" "python3"
 check_and_install "pip3" "python3-pip"
 check_and_install "gcc" "gcc"
 check_and_install "make" "make"
-check_and_install "ripgrep" "ripgrep"
+check_and_install "rg" "ripgrep"
 check_and_install "fd" "fd-find"
 check_and_install "nvim" "neovim"
 check_and_install "luarocks" "luarocks"
@@ -135,7 +135,7 @@ else
     print_installed "Paquete ${COLOR_YELLOW}Oh-My-Zsh${COLOR_WHITE} ya está instalado."
 fi
 
-ZSH_PLUGIN1_PATH="$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestion"
+ZSH_PLUGIN1_PATH="$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
 if [ ! -d ZSH_PLUGIN1_PATH ]; then
     print_info "Instalando plugin ${COLOR_YELLOW}zsh-autosuggestions${COLOR_WHITE}..."
     git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_PLUGIN1_PATH
@@ -146,7 +146,7 @@ else
 fi
 
 ZSH_PLUGIN2_PATH="$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
-if [ ! -d ZSH_PLUGIN2_PATH ]
+if [ ! -d ZSH_PLUGIN2_PATH ]; then
     print_info "Instalando plugin ${COLOR_YELLOW}zsh-syntax-highlighting${COLOR_WHITE}..."
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_PLUGIN2_PATH
     sleep 2

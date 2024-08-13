@@ -136,7 +136,7 @@ else
 fi
 
 ZSH_PLUGIN1_PATH="$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestion"
-if [ ! -d ZSH_PLUGIN1_PATH ]
+if [ ! -d ZSH_PLUGIN1_PATH ]; then
     print_info "Instalando plugin ${COLOR_YELLOW}zsh-autosuggestions${COLOR_WHITE}..."
     git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_PLUGIN1_PATH
     sleep 2

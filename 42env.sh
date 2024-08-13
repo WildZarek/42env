@@ -231,7 +231,6 @@ fi
 
 KEYMAPS_LUA_SRC="./files/keymaps.lua"
 KEYMAPS_LUA_DEST="$HOME/.config/nvim/lua/config/"
-
 if [ -f "$KEYMAPS_LUA_SRC" ]; then
     if [ -d $KEYMAPS_LUA_DEST ]; then
         print_info "Copiando archivo ${COLOR_YELLOW}keymaps.lua${COLOR_WHITE} al directorio de configuración de nvim..."

@@ -5,9 +5,10 @@
 </div>
 
 # Descripción
-Automatiza la instalación y configuración del entorno básico necesario para programar en el Cursus de 42.
-|---|
-Testeado en
+|Automatiza la instalación y configuración del entorno básico necesario para programar en el Cursus de 42.|
+|----------------------------------|
+| :Testeado en:                    |
+|----------------------------------|
 | Distribución     | Codename      |
 | ---------------- | ------------- |
 | [Ubuntu 22.04 LTS](https://releases.ubuntu.com/jammy/)  | Jammy         |

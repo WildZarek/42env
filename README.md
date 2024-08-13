@@ -112,7 +112,7 @@ LazyGit es ideal para quienes prefieren usar la terminal pero quieren una forma 
 
 # Terminator
 <div align="center">
-  <img src="https://avatars.githubusercontent.com/u/63008829" alt="Terminal Logo" width="512"/>
+  <img src="https://avatars.githubusercontent.com/u/63008829" alt="Terminal Logo" width="256"/>
 </div>
 
 Kitty es una excelente opción si buscas un emulador de terminal que combine velocidad, personalización y funcionalidad avanzada, ideal para usuarios que desean aprovechar al máximo su entorno de trabajo en la terminal. Permite dividir la pantalla en varias terminales dentro de una misma ventana, facilitando la multitarea sin necesidad de usar múltiples ventanas. Kitty es un proyecto de código abierto con un desarrollo activo, lo que significa que recibe actualizaciones frecuentes y mejoras continuas.

@@ -106,6 +106,7 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 
 # ALIASES
+alias c='clear'
 alias caa='cat */*'
 alias cca='cc -Wall -Wextra -Werror -o $1 *.c'
 alias ccf='cc -Wall -Wextra -Werror $1'

@@ -1,6 +1,6 @@
 
 <div align="center">
-  <img src="img/42_env_banner.png" alt="header_logo">
+  <img src="assets/42_env_banner.png" alt="header_logo">
   <p>42 ENVironment Configuration Script</p>
 </div>
 

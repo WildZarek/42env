@@ -101,7 +101,7 @@ sleep 3
 
 # Fix for 'fdfind' command in Ubuntu and Debian
 export PATH="$HOME/.local/bin:$PATH"
-if [ ! -f "~/.local/bin/fd" ]; then
+if [ ! $(which fd) ]; then
     ln -s $(which fdfind) ~/.local/bin/fd
 fi
 
@@ -125,15 +125,13 @@ if [ ! -f "$ZSHRC_FILE" ]; then
     fi
 else
     # Añadir los alias al .zshrc si el archivo ya existe y no existen otros alias definidos
-    if [ ! $(cat ~/.zshrc | rg ALIASES) ]; then
+    if [ ! -z $(grep "ALIASES" "$HOME/.zshrc") ]; then
         print_info "Añadiendo los alias al archivo ${COLOR_YELLOW}.zshrc${COLOR_WHITE}..."
         echo -e "\n# ALIASES\nalias c='clear'\nalias caa='cat */*'\nalias cca='cc -Wall -Wextra -Werror -o \$1 *.c'\nalias ccf='cc -Wall -Wextra -Werror \$1'\nalias ccg='cc -Wall -Wextra -Werror -g -o \$1'\nalias gcf='gcc -Wall -Wextra -Werror -o \$1'\nalias gts='git status'\nalias gta='git add \$1'\nalias gtaa='git add .'\nalias gtc='git commit -m \$1'\nalias gtpu='git push -u origin master'\nalias gtp='git push'\nalias gtd='git diff \$1'\nalias gtl=\"git log --format='%h | %ce | %cs | %ch' -n10\"\nalias ll='/usr/bin/lsd -lha --group-dirs=first'\nalias llo='/usr/bin/lsd -lha --group-dirs=first --permission octal'\nalias ls='/usr/bin/lsd --group-dirs=first'\nalias nt='norminette -R CheckForbiddenSourceHeader'\nalias fl='ft_lock'\nalias vi='/usr/bin/nvim'\n" >> "$ZSHRC_FILE"
         sleep 2
         print_ok
     else
         print_warning "Ya existen alias definidos. Ignorando configuración..."
-        sleep 1
-        print_ok
     fi
 fi
 

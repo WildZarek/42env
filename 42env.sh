@@ -103,6 +103,7 @@ sleep 3
 export PATH="$HOME/.local/bin:$PATH"
 if [ ! -f "~/.local/bin/fd" ]; then
     ln -s $(which fdfind) ~/.local/bin/fd
+fi
 
 if [ "$SHELL" != "$(which zsh)" ]; then
     print_info "Configurando ${COLOR_YELLOW}zsh${COLOR_WHITE} como shell por defecto..."

@@ -55,7 +55,7 @@ print_ok() {
 sudo -v
 while true; do sudo -n true; sleep 60; sudo -v; done 2>/dev/null &
 
-print_info "Escribe tu usuario de la Intra 42: "
+print_info "Escribe tu usuario de la Intra 42: ${COLOR_RESET}"
 read USER
 INTRAUSER="${USER}"
 
@@ -112,26 +112,30 @@ if [ "$SHELL" != "$(which zsh)" ]; then
     print_ok
 fi
 
-ZSHRC_FILE="$HOME/.zshrc"
-if [ ! -f "$ZSHRC_FILE" ]; then
+ZSHRC_SRC="./files/.zshrc"
+ZSHRC_DEST="$HOME/.zshrc"
+ALIASES_FILE="./files/aliases.txt"
+if [ ! -f "$ZSHRC_DEST" ]; then
     # Copiar el archivo .zshrc desde la raíz del script si no existe
-    if [ -f "./files/.zshrc" ]; then
-        print_info "Copiando archivo ${COLOR_YELLOW}.zshrc${COLOR_WHITE} desde el archivo de configuración en la raíz del script..."
-        cp "./files/.zshrc" "$ZSHRC_FILE"
+    if [ -f $ZSHRC_SRC ]; then
+        print_info "Copiando ${COLOR_YELLOW}.zshrc${COLOR_WHITE}..."
+        cp "$ZSHRC_SRC" "$ZSHRC_DEST"
         sleep 2
         print_ok
     else
-        print_warning "No se encontró el archivo ${COLOR_YELLOW}.zshrc${COLOR_WHITE} en la ruta actual."
+        print_warning "No se encontró el archivo ${COLOR_YELLOW}.zshrc${COLOR_WHITE} en la ruta de origen."
     fi
 else
     # Añadir los alias al .zshrc si el archivo ya existe y no existen otros alias definidos
-    if [ ! -z $(grep -q "ALIASES" "$HOME/.zshrc") ]; then
+    if ! grep -q "ALIASES" "$ZSHRC_DEST"; then
         print_info "Añadiendo los alias al archivo ${COLOR_YELLOW}.zshrc${COLOR_WHITE}..."
-        echo -e "\n# ALIASES\nalias c='clear'\nalias caa='cat */*'\nalias cca='cc -Wall -Wextra -Werror -o \$1 *.c'\nalias ccf='cc -Wall -Wextra -Werror \$1'\nalias ccg='cc -Wall -Wextra -Werror -g -o \$1'\nalias gcf='gcc -Wall -Wextra -Werror -o \$1'\nalias gts='git status'\nalias gta='git add \$1'\nalias gtaa='git add .'\nalias gtc='git commit -m \$1'\nalias gtpu='git push -u origin master'\nalias gtp='git push'\nalias gtd='git diff \$1'\nalias gtl=\"git log --format='%h | %ce | %cs | %ch' -n10\"\nalias ll='/usr/bin/lsd -lha --group-dirs=first'\nalias llo='/usr/bin/lsd -lha --group-dirs=first --permission octal'\nalias ls='/usr/bin/lsd --group-dirs=first'\nalias nt='norminette -R CheckForbiddenSourceHeader'\nalias fl='ft_lock'\nalias vi='/usr/bin/nvim'\n" >> "$ZSHRC_FILE"
+        cat "$ALIASES_FILE" >> "$ZSHRC_FILE"
         sleep 2
         print_ok
     else
-        print_warning "Ya existen alias definidos. Ignorando configuración..."
+        print_warning "Ya existen alias definidos. Cancelando configuración..."
+        sleep 1
+        print_ok
     fi
 fi
 
@@ -208,24 +212,28 @@ else
 fi
 
 VIMRC_SRC="./files/.vimrc"
+VIMRC_DEST="$HOME/.vimrc"
 if [ -f $VIMRC_SRC ]; then
-    if [ ! -f $HOME/.vimrc ]; then
+    if [ ! -f $VIMRC_DEST ]; then
         print_info "Copiando archivo ${COLOR_YELLOW}.vimrc${COLOR_WHITE} al home del usuario..."
-        echo -e "let g:user42 = '${INTRAUSER}'" >> $VIMRC_SRC
-        echo -e "let g:mail42 = '${INTRAUSER}@student.42malaga.com'" >> $VIMRC_SRC
-        cp "$VIMSRC" "$HOME"
+        cp "$VIMSRC" "$VIMRC_DEST"
+        sed -i "s/INTRAUSER/$INTRAUSER/g" "$VIMRC_DEST"
         sleep 1
         print_ok
     else
-        print_installed "Archivo ${COLOR_YELLOW}.vimrc${COLOR_WHITE} ya existente. Ignorando..."
-        print_info "Configurando variables para el header de 42..."
-        echo -e "let g:user42 = '${INTRAUSER}'" >> $VIMRC_SRC
-        echo -e "let g:mail42 = '${INTRAUSER}@student.42malaga.com'" >> $VIMRC_SRC
-        sleep 1
-        print_ok
+        print_installed "Archivo ${COLOR_YELLOW}.vimrc${COLOR_WHITE} ya existente. Cancelando copia..."
+        if [ ! $(grep -q "let g:user42" $VIMRC_DEST) ] && [ ! $(grep -q "let g:mail42" $VIMRC_DEST) ]; then
+            print_info "Configurando variables para el header de 42..."
+            echo -e "let g:user42 = '${INTRAUSER}'" >> $VIMRC_SRC
+            echo -e "let g:mail42 = '${INTRAUSER}@student.42malaga.com'" >> $VIMRC_SRC
+            sleep 1
+            print_ok
+        else
+            print_installed "El usuario de la Intra 42 ya está configurado."
+        fi
     fi
 else
-    print_warning "No se encontró el archivo ${COLOR_YELLOW}.vimrc${COLOR_WHITE} en la ruta actual."
+    print_warning "No se encontró el archivo ${COLOR_YELLOW}.vimrc${COLOR_WHITE} en la ruta de origen."
 fi
 
 KEYMAPS_LUA_SRC="./files/keymaps.lua"
@@ -252,7 +260,6 @@ fi
 
 FORMATTER_42_SRC="./files/c_formatter_42.vim"
 FORMATTER_42_DEST="$HOME/.config/nvim/lua/plugins/"
-
 if [ -f "$FORMATTER_42_SRC" ]; then
     if [ -d $FORMATTER_42_DEST ]; then
         print_info "Copiando plugin ${COLOR_YELLOW}c_formatter_42.vim${COLOR_WHITE} al directorio de plugins de nvim..."
@@ -297,6 +304,19 @@ if [ ! $(command -v lsd) ]; then
     print_ok
 else
     print_installed "Paquete ${COLOR_YELLOW}LSD${COLOR_WHITE} ya está instalado."
+fi
+
+if [ ! $(command -v batcat) ]; then
+    print_info "Instalando ${COLOR_YELLOW}bat${COLOR_WHITE}..."
+    BAT_URL="https://github.com/sharkdp/bat/releases/download/v0.24.0/bat-musl_0.24.0_amd64.deb"
+    BAT_DEB="bat-musl_0.24.0_amd64.deb"
+    curl -Lo $BAT_DEB $BAT_URL > /dev/null 2>&1
+    sudo dpkg -i $BAT_DEB > /dev/null 2>&1
+    rm $BAT_DEB > /dev/null 2>&1
+    sleep 1
+    print_ok
+else
+    print_installed "Paquete ${COLOR_YELLOW}bat${COLOR_WHITE} ya está instalado."
 fi
 
 echo ""

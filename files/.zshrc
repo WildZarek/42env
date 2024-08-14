@@ -1,6 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH="$PATH:/home/$USER/.local/bin"
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 # History configurations
 HISTFILE=~/.zsh_history
@@ -104,25 +103,3 @@ source $ZSH/oh-my-zsh.sh
 # - $ZSH_CUSTOM/aliases.zsh
 # - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
-
-# ALIASES
-alias c='clear'
-alias caa='cat */*'
-alias cca='cc -Wall -Wextra -Werror -o $1 *.c'
-alias ccf='cc -Wall -Wextra -Werror $1'
-alias ccg='cc -Wall -Wextra -Werror -g -o $1'
-alias gcf='gcc -Wall -Wextra -Werror -o $1'
-alias gts='git status'
-alias gta='git add $1'
-alias gtaa='git add .'
-alias gtc='git commit -m $1'
-alias gtpu='git push -u origin master'
-alias gtp='git push'
-alias gtd='git diff $1'
-alias gtl="git log --format='%h | %ce | %cs | %ch' -n10"
-alias ll='/usr/bin/lsd -lha --group-dirs=first'
-alias llo='/usr/bin/lsd -lha --group-dirs=first --permission octal'
-alias ls='/usr/bin/lsd --group-dirs=first'
-alias nt='norminette -R CheckForbiddenSourceHeader'
-alias fl='ft_lock'
-alias vi='/usr/bin/nvim'

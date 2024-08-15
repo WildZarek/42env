@@ -86,7 +86,7 @@ Al ejecutar el script, te pedirá tu usuario de la Intra 42, escríbelo y pulsa 
 Este usuario se usará para configurar el header de 42 para vim/nvim.
 
 Una vez que haya terminado todo el proceso, pulsa la tecla `Enter` y se reiniciará el equipo.<br>
-Después de arrancar el sistema, abre Terminator, maximiza la ventana y ejecuta `nvim`
+Después de arrancar el sistema, abre Terminator, maximiza la ventana y ejecuta `nvim`, acto seguido escribe `:PlugInstall` para que se complete la configuración de Neovim.
 
 ```bash
 nvim
@@ -111,11 +111,12 @@ Si es tu caso, pulsa la tecla `Espacio`. La configuración continuará y finaliz
 
 ## LSD (LSDeluxe)
 
-Se decidió incluir LSD ya que mejora la legibilidad en la terminal aprovechando las <strong>Hack Nerd Fonts</strong> instaladas. El alias `ll` equivale a:
+Se decidió incluir `lsd` ya que mejora la legibilidad en la terminal aprovechando las <strong>Hack Nerd Fonts</strong> instaladas. El alias `ll` equivale a:
 
 ```bash
 /usr/bin/lsd -lha --group-dirs=first
 ```
+
 <img src=assets/018_lsd_example.png alt="header_logo" align="center">
 
 Si por comodidad queremos ver los permisos de los archivos y carpetas en base octal, `llo` es un alias de:

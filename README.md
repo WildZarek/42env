@@ -44,6 +44,7 @@ Este script instala el siguiente software en el caso de que no esté instalado:
 - **luarocks |** [Package manager for Lua modules](https://luarocks.org/)
 - **nerd fonts |** [Iconic font aggregator, collection, and patcher](https://www.nerdfonts.com/) | Hack Nerd Font
 - **lsd |** [The next gen ls command](https://github.com/lsd-rs/lsd)
+- **bat |** [A cat clone with wings](https://github.com/sharkdp/bat)
 - **lazygit |** [Simple terminal UI for git commands](https://github.com/jesseduffield/lazygit)
 - Atajos de teclado para 'nvim' y config para .zshrc
 
@@ -115,35 +116,50 @@ LazyGit es ideal para quienes prefieren usar la terminal pero quieren una forma 
   <img src="https://avatars.githubusercontent.com/u/63008829" alt="Terminal Logo" width="256"/>
 </div>
 
-Kitty es una excelente opción si buscas un emulador de terminal que combine velocidad, personalización y funcionalidad avanzada, ideal para usuarios que desean aprovechar al máximo su entorno de trabajo en la terminal. Permite dividir la pantalla en varias terminales dentro de una misma ventana, facilitando la multitarea sin necesidad de usar múltiples ventanas. Kitty es un proyecto de código abierto con un desarrollo activo, lo que significa que recibe actualizaciones frecuentes y mejoras continuas.
+<strong>Terminator</strong> es una excelente opción si buscas un emulador de terminal que combine velocidad, personalización y funcionalidad avanzada, ideal para usuarios que desean aprovechar al máximo su entorno de trabajo en la terminal. Permite dividir la pantalla en varias terminales dentro de una misma ventana, facilitando la multitarea sin necesidad de usar múltiples ventanas. Terminator es un proyecto de código abierto con un desarrollo activo, lo que significa que recibe actualizaciones frecuentes y mejoras continuas.
+
+Terminator is a terminal emulator that lets you combine and recombine terminals in one window. It has features like titlebar, grouping, keyboard shortcuts, and web documentation.
 
 ## Atajos principales de teclado:
 
 | Atajo | Descripción |
 | --- | --- |
-| `Ctrl` + `Shift` + `Enter` | Abrir una nueva ventana en el directorio actual |
-| `Ctrl` + `Shift` + `w` | Cierra la terminal o la ventana activa |
-| `Ctrl` + `Shift` + `T` | Abrir una nueva pestaña en el directorio actual |
-| `Ctrl` + `Shift` + `Alt` + `T` | Renombra la pestaña en el directorio actual |
-| `Ctrl` + `Shift` + `→` | Moverse a la pestaña de la derecha |
-| `Ctrl` + `Shift` + `←` | Moverse a la pestaña de la izquierda |
-| `Ctrl` + `←` | Mover a la ventana vecina a la izquierda |
-| `Ctrl` + `→` | Mover a la ventana vecina a la derecha |
-| `Ctrl` + `↑` | Mover a la ventana vecina hacia arriba |
-| `Ctrl` + `↓` | Mover a la ventana vecina hacia abajo |
-| `Ctrl` + `Shift` + `J` | Hacer la ventana más ancha |
-| `Ctrl` + `Shift` + `L` | Hacer la ventana más estrecha |
-| `Ctrl` + `Shift` + `I` | Hacer la ventana más alta |
-| `Ctrl` + `Shift` + `K` | Hacer la ventana más baja |
-| `Shift` + `Alt` + `↑` | Desplazar al principio del buffer de desplazamiento |
-| `Shift` + `Alt` + `↓` | Desplazar al final del buffer de desplazamiento |
-| `Shift` + `Alt` + `←` | Desplazar una página hacia arriba |
-| `Shift` + `Alt` + `→` | Desplazar una página hacia abajo |
-| `Ctrl` + `Shift` + `Z` | "Zoom" Alternar entre el diseño en mosaico o pantalla completa |
+| `Ctrl` + `Shift` + `Q` | Finaliza la ejecución de Terminator |
+| `Ctrl` + `Shift` + `W` | Cierra la terminal o la ventana activa |
+| `Ctrl` + `Shift` + `I` | Abre una nueva ventana (la cual es parte del proceso actual de Terminator)
+| `Ctrl` + `Shift` + `T` | Abre una nueva pestaña en el directorio actual |
+| `Ctrl` + `Shift` + `O` | Divide la terminal horizontalmente |
+| `Ctrl` + `Shift` + `E` | Divide la terminal horizontalmente |
+| `Ctrl` + `Shift` + `→` | Modifica el tamaño de la terminal verticalmente |
+| `Ctrl` + `Shift` + `←` | Modifica el tamaño de la terminal verticalmente |
+| `Ctrl` + `Shift` + `↑` | Modifica el tamaño de la terminal horizontalmente |
+| `Ctrl` + `Shift` + `↓` | Modifica el tamaño de la terminal horizontalmente |
+| `Ctrl` + `Shift` + `S` | Oculta/Muestra la barra de scroll de la terminal activa |
+| `Ctrl` + `Shift` + `F` | Muestra la barra de búsqueda |
+| `Ctrl` + `Shift` + `N` | Cambia a la siguiente terminal en la misma pestaña |
+| `Ctrl` + `Shift` + `P` | Cambia a la anterior terminal en la misma pestaña |
+| `Ctrl` + `Shift` + `X` | Cambia entre mostrar todas las terminales o maximizar la actual |
+| `Ctrl` + `Shift` + `Z` | Cambia entre mostrar todas las terminales o una visión ampliada de la actual (zoom) |
+| `Ctrl` + `PageDown` | Cambia a la siguiente terminal |
+| `Ctrl` + `PageUp` | Cambia a la terminal anterior |
+| `Alt` + `→` | Cambia a la terminal justo a la derecha de la actual |
+| `Alt` + `←` | Cambia a la terminal justo a la izquierda de la actual |
+| `Alt` + `↑` | Cambia a la terminal justo encima de la actual |
+| `Alt` + `↓` | Cambia a la terminal justo debajo de la actual |
+| `Ctrl` + `Shift` + `C` | Copia el texto seleccionado a la clipboard |
+| `Ctrl` + `Shift` + `V` | Pega el contenido de la clipboard a la terminal actual |
+| `Ctrl` + `Plus` (+) | Aumenta el tamaño de la fuente para la terminal actual (es posible que debas presionar `Shift` dependiendo del teclado) |
+| `Ctrl` + `Minus` (-) | Reduce el tamaño de la fuente para la terminal actual (es posible que debas presionar `Shift` dependiendo del teclado) |
+| `Ctrl` + `Zero` (0) | Reinicia el tamaño de la fuente para la terminal actual (a los valores de configuración por defecto) |
+| `F11` | Activa o desactiva la pantalla completa |
+| `Ctrl` + `Shift` + `R` | Reinicia el estado de la terminal |
+| `Ctrl` + `Shift` + `G` | Reinicia el estado de la terminal y limpia la pantalla |
 
 # En proceso...
-Próximamente intentaré publicar el proyecto con un configuracion alternativa para su ejecución en usuarios con permisos limitados. Toda mejora es bienvenida. Si te ha gustado y te ha resultado práctico, no olvides darme una estrella.
+Próximamente intentaré publicar el proyecto con una configuración alternativa para su ejecución en usuarios con permisos limitados.
 
-### Gracias!
+> ##### Si consideras útil este proyecto, apóyalo haciendo "★ Star" en el repositorio. ¡Gracias!
+
+### Hack & Code 😎
 
 [Volver al índice](#índice)

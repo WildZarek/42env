@@ -1,6 +1,7 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
+local opts = { noremap = true, silent = true }
+
+-- Shorten function name
+local keymap = vim.api.nvim_set_keymap
 
 -- Mapeo para el comando :Stdheader con la tecla <F1>, hacer un salto de línea y activar modo INSERT.
 function InsertHeaderWithNewline()
@@ -9,18 +10,16 @@ function InsertHeaderWithNewline()
   vim.cmd('startinsert')
 end
 
-vim.api.nvim_set_keymap('n', '<F1>', ':lua InsertHeaderWithNewline()<CR>', { noremap = true, silent = true })
-
--- Mapeo de F2 está asignado a 42 Formatter.
-
--- Mapear F3 para ejecutar Norminette
-vim.api.nvim_set_keymap('n', '<F3>', ':Norminette<CR>', { noremap = true, silent = true })
-
--- Mapear F4 para cerrar la ventana actual
-vim.api.nvim_set_keymap('n', '<F4>', ':q<CR>', { noremap = true, silent = true })
-
--- Mapear F5 para guardar el documento actual
-vim.api.nvim_set_keymap('n', '<F5>', ':w<CR>', { noremap = true, silent = true })
-
--- Mapear F6 para abrir/cerrar el explorador de NeoTree en el directorio de trabajo actual (cwd)
-vim.api.nvim_set_keymap('n', '<F6>', '<cmd>Neotree toggle current<CR>', { noremap = true, silent = true })
+keymap('n', '<F1>', ':lua InsertHeaderWithNewline()<CR>', opts)
+                                                          -- Mapeo F2 está asignado a 42 Formatter.
+keymap('n', '<F3>', ':Norminette<CR>', opts)              -- Mapear F3 para ejecutar Norminette
+keymap('n', '<F4>', ':q<CR>', opts)                       -- Mapear F4 para cerrar la ventana actual
+keymap('n', '<F5>', ':w<CR>', opts)                       -- Mapear F5 para guardar el documento actual
+keymap('n', '<F6>', ':NERDTreeToggle<CR>', opts)          -- Mapear F6 para mostrar el explorador NERDTree en la ruta actual
+keymap('n', '<F7>', ':TagbarToggle<CR>', opts)            -- Mapear F7 para mostrar los tags a la derecha
+keymap("n", "ss", ":split<CR><C-w>w", opts)               -- Open a horizontal split.
+keymap("n", "sv", ":vsplit<CR><C-w>w", opts)              -- Open a vertical split.
+keymap('n', '<C-Up>', ':resize -2<CR>', opts)             -- Resize Up (Horizontal)
+keymap('n', '<C-Down>', ':resize +2<CR>', opts)           -- Resize Down (Horizontal)
+keymap('n', '<C-Left>', ':vertical resize -2<CR>', opts)  -- Resize Left (Vertical)
+keymap('n', '<C-Right>', ':vertical resize +2<CR>', opts) -- Resize Right (Vertical)

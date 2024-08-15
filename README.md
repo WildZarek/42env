@@ -17,7 +17,7 @@ Testeado en las siguientes distribuciones:
 # Importante
 
 La ejecución de `42env.sh` en entornos basados en `WSL (Windows Subsystem for Linux)` actualmente da ciertos problemas relacionados con la instalación de <strong>'norminette'</strong> y <strong>'c_formatter_42'</strong> debido a que la instalación (en general) de paquetes con `pip/pip3` está limitada. La solución más simple es instalar `pipx` o bien crear un `virtualenv` desde el que instalar estos paquetes (lo cual es recomendable).
-Luego es necesario incluir el directorio 'bin' del virtualenv en el PATH del sistema para que se pueda llamar a los binarios correspondientes desde fuera del mismo.
+Luego es necesario incluir el directorio 'bin' del virtualenv en el PATH del sistema para que se pueda llamar a los binarios correspondientes desde fuera del mismo. Al finalizar la ejecución del script, en el momento que se nos pide reiniciar el sistema, también nos dará error si estamos bajo WSL, esto es debido a que no podemos hacer `sudo reboot` como haríamos normalmente en nuestra máquina virtual. La solución es tan simple como cerrar la instancia de WSL con el comando `exit` y volver a lanzar nuestra distro bajo WSL.
 
 # Índice
 
@@ -82,10 +82,10 @@ chmod +x 42env.sh ; ./42env.sh
 
 # Durante la ejecución
 
-Al ejecutar el script, te pedirá tu usuario de la Intra 42; escríbelo y pulsa `Enter`<br>
+Al ejecutar el script, te pedirá tu usuario de la Intra 42, escríbelo y pulsa `Enter`<br>
 Este usuario se usará para configurar el header de 42 para vim/nvim.
 
-Una vez que haya terminado todo el proceso, pulsa la tecla Enter y se reiniciará el equipo.<br>
+Una vez que haya terminado todo el proceso, pulsa la tecla `Enter` y se reiniciará el equipo.<br>
 Después de arrancar el sistema, abre Terminator, maximiza la ventana y ejecuta `nvim`
 
 ```bash
@@ -110,7 +110,8 @@ Si es tu caso, pulsa la tecla `Espacio`. La configuración continuará y finaliz
 > Pendiente de redactar esta sección...
 
 ## LSD (LSDeluxe)
-La configuración incluye la instalación de LSD, ya que mejora la legibilidad en la terminal aprovechando las <strong>Hack Nerd Fonts</strong> instaladas. El alias `ll` equivale a:
+
+Se decidió incluir LSD ya que mejora la legibilidad en la terminal aprovechando las <strong>Hack Nerd Fonts</strong> instaladas. El alias `ll` equivale a:
 
 ```bash
 /usr/bin/lsd -lha --group-dirs=first

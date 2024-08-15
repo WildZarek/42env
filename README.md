@@ -6,7 +6,7 @@
 
 # Descripción
 
-Automatiza la instalación y configuración del entorno básico necesario para programar en el Cursus de 42.
+Automatiza la instalación y configuración del entorno básico necesario para programar en el Cursus de 42.<br>
 Testeado en las siguientes distribuciones:
 
 | Distribución                                             | Codename      |
@@ -23,6 +23,7 @@ Testeado en las siguientes distribuciones:
 4. [Durante la ejecución](#durante-la-ejecución)
 5. [Extras](#extras)
     - [LSD (LSDeluxe)](#lsd-lsdeluxe)
+    - [BAT (batcat)](#batcat)
 6. [En proceso...](#en-proceso)
 
 ## Software
@@ -97,6 +98,10 @@ Si por más comodidad queremos ver los permisos de los archivos y carpetas en oc
 /usr/bin/lsd -lha --group-dirs=first --permission octal
 ```
 <img src=assets/019_lsd_example_octal.png alt="header_logo" align="center">
+
+# BAT (batcat)
+
+> Pendiente de redactar esta sección...
 
 # LazyGit
 LazyGit es ideal para quienes prefieren usar la terminal pero quieren una forma más cómoda y rápida de manejar Git sin tener que escribir todos los comandos manualmente. Resulta especialmente útil para desarrolladores que trabajan con repositorios grandes y complejos, ya que facilita la visualización de los cambios y permite moverse ágilmente entre las distintas secciones del repositorio.

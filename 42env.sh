@@ -36,6 +36,10 @@ sleep 3
 clear
 banner
 
+print_warning() {
+    echo -ne "${COLOR_WHITE}[${COLOR_RED}!${COLOR_WHITE}] $1${COLOR_RESET}"
+}
+
 print_info() {
     echo -ne "${COLOR_WHITE}[${COLOR_CYAN}>${COLOR_WHITE}] $1${COLOR_RESET}"
 }
@@ -44,12 +48,12 @@ print_installed() {
     echo -e "${COLOR_WHITE}[${COLOR_MAGENTA}i${COLOR_WHITE}] $1${COLOR_RESET}"
 }
 
-print_warning() {
-    echo -e "${COLOR_WHITE}[${COLOR_RED}!${COLOR_WHITE}] $1${COLOR_RESET}"
-}
-
 print_ok() {
     echo -e "${COLOR_GREEN}OK${COLOR_RESET}"
+}
+
+print_pass() {
+    echo -e "${COLOR_BLUE}PASS${COLOR_RESET}"
 }
 
 sudo -v
@@ -75,7 +79,7 @@ check_and_install() {
 print_info "Actualizando sistema..."
 sudo apt-get update > /dev/null 2>&1
 sudo apt-get upgrade -y > /dev/null 2>&1
-sudo apt-get install -y software-properties-common build-essential curl wget unzip > /dev/null 2>&1
+sudo apt-get install -y software-properties-common build-essential curl wget unzip exuberant-ctags > /dev/null 2>&1
 print_ok
 
 check_and_install "zsh" "zsh"
@@ -123,7 +127,7 @@ if [ ! -f "$ZSHRC_DEST" ]; then
         sleep 2
         print_ok
     else
-        print_warning "No se encontró el archivo ${COLOR_YELLOW}.zshrc${COLOR_WHITE} en la ruta de origen."
+        print_warning "No se encontró el archivo ${COLOR_YELLOW}.zshrc${COLOR_WHITE} en la ruta de origen.\n"
     fi
 else
     # Añadir los alias al .zshrc si el archivo ya existe y no existen otros alias definidos
@@ -135,7 +139,7 @@ else
     else
         print_warning "Ya existen alias definidos. Cancelando configuración..."
         sleep 1
-        print_ok
+        print_pass
     fi
 fi
 
@@ -211,21 +215,27 @@ else
     print_installed "La fuente ${COLOR_YELLOW}Hack Nerd Font${COLOR_WHITE} ya está instalada."
 fi
 
-VIMRC_SRC="./files/.vimrc"
-VIMRC_DEST="$HOME/.vimrc"
-if [ -f $VIMRC_SRC ]; then
-    if [ ! -f $VIMRC_DEST ]; then
-        print_info "Copiando archivo ${COLOR_YELLOW}.vimrc${COLOR_WHITE} al home del usuario..."
-        cp "$VIMSRC" "$VIMRC_DEST"
-        sed -i "s/INTRAUSER/$INTRAUSER/g" "$VIMRC_DEST"
+# Configuración de Neovim + Plugins
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+NVIM_SRC="./files/init.vim"
+NVIM_DEST="$HOME/.config/nvim/lua/init.vim"
+if [ -f $NVIM_SRC ]; then
+    if [ ! -f $NVIM_DEST ]; then
+        print_info "Copiando archivo ${COLOR_YELLOW}init.vim${COLOR_WHITE} al home del usuario..."
+        cp "$NVIM_SRC" "$NVIM_DEST"
+        sed -i "s/INTRAUSER/$INTRAUSER/g" "$NVIM_DEST"
         sleep 1
         print_ok
     else
-        print_installed "Archivo ${COLOR_YELLOW}.vimrc${COLOR_WHITE} ya existente. Cancelando copia..."
-        if [ ! $(grep -q "let g:user42" $VIMRC_DEST) ] && [ ! $(grep -q "let g:mail42" $VIMRC_DEST) ]; then
+        print_installed "Archivo ${COLOR_YELLOW}init.vim${COLOR_WHITE} ya existente. Cancelando copia..."
+        sleep 1
+        print_pass
+        if [ ! $(grep -q "let g:user42" $NVIM_DEST) ] && [ ! $(grep -q "let g:mail42" $NVIM_DEST) ]; then
             print_info "Configurando variables para el header de 42..."
-            echo -e "let g:user42 = '${INTRAUSER}'" >> $VIMRC_SRC
-            echo -e "let g:mail42 = '${INTRAUSER}@student.42malaga.com'" >> $VIMRC_SRC
+            echo -e "let g:user42 = '${INTRAUSER}'" >> $NVIM_DEST
+            echo -e "let g:mail42 = '${INTRAUSER}@student.42malaga.com'" >> $NVIM_DEST
             sleep 1
             print_ok
         else
@@ -233,11 +243,11 @@ if [ -f $VIMRC_SRC ]; then
         fi
     fi
 else
-    print_warning "No se encontró el archivo ${COLOR_YELLOW}.vimrc${COLOR_WHITE} en la ruta de origen."
+    print_warning "No se encontró el archivo ${COLOR_YELLOW}init.vim${COLOR_WHITE} en la ruta de origen.\n"
 fi
 
 KEYMAPS_LUA_SRC="./files/keymaps.lua"
-KEYMAPS_LUA_DEST="$HOME/.config/nvim/lua/config/"
+KEYMAPS_LUA_DEST="$HOME/.config/nvim/lua/configs/"
 if [ -f "$KEYMAPS_LUA_SRC" ]; then
     if [ -d $KEYMAPS_LUA_DEST ]; then
         print_info "Copiando archivo ${COLOR_YELLOW}keymaps.lua${COLOR_WHITE} al directorio de configuración de nvim..."
@@ -255,7 +265,7 @@ if [ -f "$KEYMAPS_LUA_SRC" ]; then
         print_ok
     fi
 else
-    print_warning "No se encontró el archivo ${COLOR_YELLOW}keymaps.lua${COLOR_WHITE} en la ruta actual."
+    print_warning "No se encontró el archivo ${COLOR_YELLOW}keymaps.lua${COLOR_WHITE} en la ruta actual.\n"
 fi
 
 FORMATTER_42_SRC="./files/c_formatter_42.vim"
@@ -277,7 +287,7 @@ if [ -f "$FORMATTER_42_SRC" ]; then
         print_ok
     fi
 else
-    print_warning "No se encontró el archivo ${COLOR_YELLOW}c_formatter_42.vim${COLOR_WHITE} en la ruta actual."
+    print_warning "No se encontró el archivo ${COLOR_YELLOW}c_formatter_42.vim${COLOR_WHITE} en la ruta actual.\n"
 fi
 
 if [ ! $(command -v lazygit) ]; then
@@ -294,7 +304,7 @@ else
 fi
 
 if [ ! $(command -v lsd) ]; then
-    print_info "Instalando ${COLOR_YELLOW}LSD${COLOR_WHITE}..."
+    print_info "Instalando ${COLOR_YELLOW}lsd${COLOR_WHITE}..."
     LSD_URL="https://github.com/lsd-rs/lsd/releases/download/v1.1.2/lsd-musl_1.1.2_amd64.deb"
     LSD_DEB="lsd-musl_1.1.2_amd64.deb"
     curl -Lo $LSD_DEB $LSD_URL > /dev/null 2>&1
@@ -303,7 +313,7 @@ if [ ! $(command -v lsd) ]; then
     sleep 1
     print_ok
 else
-    print_installed "Paquete ${COLOR_YELLOW}LSD${COLOR_WHITE} ya está instalado."
+    print_installed "Paquete ${COLOR_YELLOW}lsd${COLOR_WHITE} ya está instalado."
 fi
 
 if [ ! $(command -v batcat) ]; then
@@ -331,7 +341,7 @@ echo ""
 
 sleep 1
 print_installed "[${COLOR_RED}ATENCIÓN${COLOR_WHITE}] El sistema se reiniciará para aplicar todos los cambios."
-print_info "Después del reinicio, ejecuta 'nvim' para que la configuración de Neovim se complete."
+print_info "Después del reinicio, ejecuta 'nvim' y escribe ':PlugInstall' para que la configuración de Neovim se complete."
 
 echo ""
 echo ""

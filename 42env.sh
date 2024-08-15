@@ -255,7 +255,7 @@ if [ -f "$KEYMAPS_LUA_SRC" ]; then
         sleep 1
         print_ok
     else
-        print_warning "No se encontró el directorio de configuración de nvim. Creando los directorios..."
+        print_warning "No se encontró el directorio de 'configs' de nvim. Creando los directorios..."
         mkdir -p $KEYMAPS_LUA_DEST
         sleep 1
         print_ok
@@ -277,7 +277,7 @@ if [ -f "$FORMATTER_42_SRC" ]; then
         sleep 1
         print_ok
     else
-        print_warning "No se encontró el directorio de plugins de nvim. Creando los directorios..."
+        print_warning "No se encontró el directorio 'plugins' de nvim. Creando los directorios..."
         mkdir -p $FORMATTER_42_DEST
         sleep 1
         print_ok

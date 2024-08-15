@@ -6,9 +6,7 @@
 
 # Descripción
 
-
 Automatiza la instalación y configuración del entorno básico necesario para programar en el Cursus de 42.
-
 Testeado en las siguientes distribuciones:
 
 | Distribución                                             | Codename      |

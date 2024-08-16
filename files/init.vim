@@ -1,7 +1,11 @@
 set encoding=utf-8
+set autoindent
 set ruler
 set number
+set relativenumber
 set syntax=on
+set mouse=a
+
 autocmd FileType c,cpp setlocal shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab splitbelow
 
 " Start NERDTree. If a file is specified, move the cursor to its window.

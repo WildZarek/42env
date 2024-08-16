@@ -111,9 +111,7 @@ En NeoVim se han definido multitud de atajos de teclado para el uso diario que f
 
 **Tecla <kbd>F1</kbd>:** Inserta el header de 42 y pone el editor en modo `Insert`.
 
-<div align="center">
-  <img src="img/004_header_42.png" alt="header_42">
-</div>
+<img src="assets/004_header_42.png" alt="header_42" align="center">
 
 <br>
 

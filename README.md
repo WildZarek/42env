@@ -113,7 +113,7 @@ En NeoVim se han definido multitud de atajos de teclado para el uso diario que f
 
 <img src="assets/004_header_42.png" alt="Header 42" align="center">
 
-**Tecla <kbd>F2</kbd>:** Formatea automáticamente el código siguiend la Norma para presentarlo a la `norminette`.
+**Tecla <kbd>F2</kbd>:** Formatea automáticamente el código siguiendo la Norma para presentarlo a la `norminette`.
 
 <img src="assets/005_example_code.png" alt="Example of Wrong Code">
 <img src="assets/006_fixed_code.png" alt="Code fixed">

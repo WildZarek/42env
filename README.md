@@ -1,6 +1,6 @@
 
 <div align="center">
-  <img src="assets/42_env_banner.png" alt="header_logo">
+  <img src="assets/42_env_banner.png" alt="42 Env Banner">
   <p>42 ENVironment Configuration Script</p>
 </div>
 
@@ -25,14 +25,16 @@ Luego es necesario incluir el directorio 'bin' del virtualenv en el PATH del sis
 2. [Recomendaciones](#recomendaciones)
 3. [Instalación](#instalación)
 4. [Durante la ejecución](#durante-la-ejecución)
-5. [Extras](#extras)
+5. [Neovim](#neovim)
+    - [Uso básico de NeoVim](#uso-básico-de-neovim)
+6. [Extras](#extras)
     - [Oh-My-Zsh](#oh-my-zsh)
     - [zsh-autocompletions](#zsh-autocompletions)
     - [zsh-syntax-highlighting](#zsh-syntax-highlighting)
     - [LSD (LSDeluxe)](#lsd-lsdeluxe)
     - [BAT (batcat)](#batcat)
     - [LazyGit](#lazygit)
-6. [En proceso...](#en-proceso)
+7. [En proceso...](#en-proceso)
 
 # Software
 
@@ -63,7 +65,7 @@ Este script instala el siguiente software en el caso de que no esté instalado:
 # Instalación
 
 <div align="center">
-  <img src="assets/000_running.png" alt="script running">
+  <img src="assets/000_running.png" alt="Script Running">
 </div>
 
 Primero descargamos el repositorio y entramos en la carpeta 42env del repositorio clonado.
@@ -78,7 +80,7 @@ Asigna permisos de ejecución al script y ejecútalo. Se recomienda tener siempr
 chmod +x 42env.sh; ./42env.sh
 ```
 <div align="center">
-  <img src="assets/001_install_log.png" alt="install_log">
+  <img src="assets/001_install_log.png" alt="Installation Log">
 </div>
 
 # Durante la ejecución
@@ -95,6 +97,25 @@ nvim
 
 Si no pulsas con el ratón en la ventana de instalación, puede que el instalador te pida que pulses una tecla.<br>
 Si es tu caso, pulsa la tecla `Espacio`. La configuración continuará y finalizará cuando te solicite que pulses `Enter`.
+
+# NeoVim
+
+Si ejecutas `nvim` sin ningún nombre de archivo, se abrirá a la izquierda el explorador de archivos en la ruta actual para que puedas navegar entre las distintas carpetas y archivos. Si se ejecuta pasando un nombre de archivo, entonces el foco cambia directamente a la ventana del archivo.
+
+<img src="assets/002_neovim_install.png" alt="NeoVim without file" align="center">
+<img src="assets/003_neovim_file.png" alt="NeoVim with file" align="center">
+
+## Uso básico de NeoVim
+
+En NeoVim se han definido multitud de atajos de teclado para el uso diario que funcionan solo en el modo NORMAL y nos facilitan la tarea de escribir codigo:
+
+**Tecla <kbd>F1</kbd>:** Inserta el header de 42 y pone el editor en modo `Insert`.
+
+<div align="center">
+  <img src="img/004_header_42.png" alt="header_42">
+</div>
+
+<br>
 
 # Extras
 

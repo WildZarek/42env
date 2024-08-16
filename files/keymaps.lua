@@ -3,10 +3,10 @@ local opts = { noremap = true, silent = true }
 -- Shorten function name
 local keymap = vim.keymap
 
--- Mapeo para el comando :Stdheader con la tecla <F1>, hacer un salto de línea y activar modo INSERT.
+-- Mapeo para el comando :Stdheader con la tecla <F1> y activar modo INSERT.
 function InsertHeaderWithNewline()
   vim.cmd('Stdheader')
-  vim.cmd('normal! o')
+  -- vim.cmd('normal! o') salto de lína innecesario
   vim.cmd('startinsert')
 end
 
@@ -24,5 +24,5 @@ keymap.set('n', '<C-j>', '<C-w><C-j>', opts)                  -- Mapear Ctrl+j p
 keymap.set('n', '<C-k>', '<C-w><C-k>', opts)                  -- Mapear Ctrl+k para movernos a la ventana superior
 keymap.set('n', '<C-Up>', ':resize -2<CR>', opts)             -- Mapear Ctrl+↑ para redimensionar la ventana activa hacia arriba (Horizontal)
 keymap.set('n', '<C-Down>', ':resize +2<CR>', opts)           -- Mapear Ctrl+↓ para redimensionar la ventana activa hacia abajo (Horizontal)
-keymap.set('n', '<C-Left>', ':vertical resize +2<CR>', opts)  -- Mapear Ctrl+← para redimensionar la ventana activa hacia la izquierda (Vertical)
-keymap.set('n', '<C-Right>', ':vertical resize -2<CR>', opts) -- Mapear Ctrl+→ para redimensionar la ventana activa hacia la derecha (Vertical)
+keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', opts)  -- Mapear Ctrl+← para redimensionar la ventana activa hacia la izquierda (Vertical)
+keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', opts) -- Mapear Ctrl+→ para redimensionar la ventana activa hacia la derecha (Vertical)

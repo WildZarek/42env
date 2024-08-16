@@ -17,7 +17,7 @@ Testeado en las siguientes distribuciones:
 # Importante
 
 La ejecución de `42env.sh` en entornos basados en `WSL (Windows Subsystem for Linux)` actualmente da ciertos problemas relacionados con la instalación de <strong>'norminette'</strong> y <strong>'c_formatter_42'</strong> debido a que la instalación (en general) de paquetes con `pip/pip3` está limitada. La solución más simple es instalar `pipx` o bien crear un `virtualenv` desde el que instalar estos paquetes (lo cual es recomendable).
-Luego es necesario incluir el directorio 'bin' del virtualenv en el PATH del sistema para que se pueda llamar a los binarios correspondientes desde fuera del mismo. Al finalizar la ejecución del script, en el momento que se nos pide reiniciar el sistema, también nos dará error si estamos bajo WSL, esto es debido a que no podemos hacer `sudo reboot` como haríamos normalmente en nuestra máquina virtual. La solución es tan simple como cerrar la instancia de WSL con el comando `exit` y volver a lanzar nuestra distro bajo WSL.
+Luego es necesario incluir el directorio 'bin' del virtualenv en el PATH del sistema para que se pueda llamar a los binarios correspondientes desde fuera del mismo. Al finalizar la ejecución del script, en el momento que se nos pide reiniciar el sistema, también nos dará error si estamos bajo WSL, esto es debido a que no podemos hacer `sudo reboot` como haríamos normalmente en nuestra máquina virtual. La solución es tan simple como cerrar WSL con el comando `exit` y volver a lanzar nuestra distro bajo WSL.
 
 # Índice
 
@@ -69,13 +69,13 @@ Este script instala el siguiente software en el caso de que no esté instalado:
 Primero descargamos el repositorio y entramos en la carpeta 42env del repositorio clonado.
 
 ```bash
-git clone https://github.com/WildZarek/42env.git ; cd 42env
+git clone https://github.com/WildZarek/42env.git; cd 42env
 ```
 
 Asigna permisos de ejecución al script y ejecútalo. Se recomienda tener siempre maximizada la ventana de la shell.
 
 ```bash
-chmod +x 42env.sh ; ./42env.sh
+chmod +x 42env.sh; ./42env.sh
 ```
 <div align="center">
   <img src="assets/001_install_log.png" alt="install_log">
@@ -142,6 +142,27 @@ LazyGit es ideal para quienes prefieren usar la terminal pero quieren una forma 
   <img src="assets/021_lazy_git.png" alt="lazy_git">
 </div>
 
+## Atajos de teclado (Neovim) en modo NORMAL
+
+| Atajo | Descripción |
+| --- | --- |
+| `F1` | Añade el header de 42 |
+| `F2` | Aplica auto-formato al código C en base a la Norma v3 de 42 |
+| `F3` | Ejecuta Norminette sobre el archivo actual y muestra los errores de norma |
+| `F4` | Muestra u oculta explorador de archivos NERDTree |
+| `F5` | Muestra u oculta el plugin Tagbar a la derecha |
+| `Ctrl` + `q` | Cierra la ventana actual sin guardar los cambios (:q!) |
+| `Ctrl` + `s` | Guarda los cambios en el documento actual (:w) |
+| `Ctrl` + `f` | Guarda los cambios en el documento actual y cierra Nvim (:wq) |
+| `Ctrl` + `h` | Cambia el foco a la división del lado izquierdo |
+| `Ctrl` + `l` | Cambia el foco a la división del lado derecho |
+| `Ctrl` + `j` | Cambia el foco a la división del lado inferior |
+| `Ctrl` + `k` | Cambia el foco a la división del lado superior |
+| `Ctrl` + `↑` | Cambia el tamaño de la división activa hacia arriba (horizontalmente) |
+| `Ctrl` + `↓` | Cambia el tamaño de la división activa hacia abajo (horizontalmente) |
+| `Ctrl` + `←` | Cambia el tamaño de la división activa hacia la izquierda (verticalmente) |
+| `Ctrl` + `→` | Cambia el tamaño de la división activa hacia la derecha (verticalmente) |
+
 # Terminal
 
 ## Terminator
@@ -151,7 +172,7 @@ LazyGit es ideal para quienes prefieren usar la terminal pero quieren una forma 
 
 <strong>Terminator</strong> es una excelente opción si buscas un emulador de terminal que combine velocidad, personalización y funcionalidad avanzada, ideal para usuarios que desean aprovechar al máximo su entorno de trabajo en la terminal. Permite dividir la pantalla en varias terminales dentro de una misma ventana, facilitando la multitarea sin necesidad de usar múltiples ventanas. Terminator es un proyecto de código abierto con un desarrollo activo, lo que significa que recibe actualizaciones frecuentes y mejoras continuas.
 
-## Atajos de teclado:
+## Atajos de teclado (Terminator)
 
 | Atajo | Descripción |
 | --- | --- |

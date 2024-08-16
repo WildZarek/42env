@@ -49,6 +49,7 @@ Este script instala el siguiente software en el caso de que no esté instalado:
 - **ripgrep |** [Recursively searches by regex pattern](https://github.com/BurntSushi/ripgrep)
 - **fd / fd-find |** [Simply alternative to 'find'](https://github.com/sharkdp/fd)
 - **luarocks |** [Package manager for Lua modules](https://luarocks.org/)
+- **neovim |** [Hyperextensible Vim-based text editor](https://neovim.io/) + vim-plug + 42 plugins
 - **nerd fonts |** [Iconic font aggregator, collection, and patcher](https://www.nerdfonts.com/) | Hack Nerd Font
 - **lsd |** [The next gen ls command](https://github.com/lsd-rs/lsd)
 - **bat |** [A cat clone with wings](https://github.com/sharkdp/bat)

@@ -102,7 +102,7 @@ Si es tu caso, pulsa la tecla `Espacio`. La configuración continuará y finaliz
 
 Si ejecutas `nvim` sin ningún nombre de archivo, se abrirá a la izquierda el explorador de archivos en la ruta actual para que puedas navegar entre las distintas carpetas y archivos. Si se ejecuta pasando un nombre de archivo, entonces el foco cambia directamente a la ventana del archivo.
 
-<img src="assets/002_neovim_install.png" alt="NeoVim without file" align="center">
+<img src="assets/002_neovim.png" alt="NeoVim without file" align="center">
 <img src="assets/003_neovim_file.png" alt="NeoVim with file" align="center">
 
 ## Uso básico de NeoVim
@@ -111,9 +111,12 @@ En NeoVim se han definido multitud de atajos de teclado para el uso diario que f
 
 **Tecla <kbd>F1</kbd>:** Inserta el header de 42 y pone el editor en modo `Insert`.
 
-<img src="assets/004_header_42.png" alt="header_42" align="center">
+<img src="assets/004_header_42.png" alt="Header 42" align="center">
 
-<br>
+**Tecla <kbd>F2</kbd>:** Formatea automáticamente el código siguiend la Norma para presentarlo a la `norminette`.
+
+<img src="assets/005_example_code.png" alt="Example of Wrong Code">
+<img src="assets/006_fixed_code.png" alt="Code fixed">
 
 # Extras
 

@@ -118,7 +118,7 @@ En NeoVim se han definido multitud de atajos de teclado para el uso diario que f
 
 <img src="assets/007_errors_norminette.png" alt="Errors in code syntax" align="center" />
 
-**Tecla <kbd>Ctrl</kbd>+<kbd>q</kbd>:** Cierra la ventana activa / `norminette` / Cierra `nvim` / Equivale a `:q`.
+**Tecla <kbd>Ctrl</kbd>+<kbd>q</kbd>:** Fuerza el cierre de la ventana activa [Equivale a `:q!`]
 
 <img src="assets/008_norminette_ok.png" alt="Norminette passed" align="center" />
 

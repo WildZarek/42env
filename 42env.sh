@@ -104,9 +104,12 @@ check_and_install "luarocks" "luarocks"
 sleep 3
 
 # Fix for 'fdfind' command in Ubuntu and Debian
+FD_SYMLINK_PATH="$HOME/.local/bin/fd"
 export PATH="$HOME/.local/bin:$PATH"
 if [ ! $(which fd) ]; then
-    ln -s $(which fdfind) ~/.local/bin/fd
+    if [ ! -d FD_SYMLINK_PATH ]; then
+        ln -s $(which fdfind) $FD_SYMLINK_PATH
+    fi
 fi
 
 if [ "$SHELL" != "$(which zsh)" ]; then
@@ -120,9 +123,8 @@ ZSHRC_SRC="./files/.zshrc"
 ZSHRC_DEST="$HOME/.zshrc"
 ALIASES_FILE="./files/aliases.txt"
 if [ ! -f "$ZSHRC_DEST" ]; then
-    # Copiar el archivo .zshrc desde la raíz del script si no existe
     if [ -f $ZSHRC_SRC ]; then
-        print_info "Copiando ${COLOR_YELLOW}.zshrc${COLOR_WHITE}..."
+        print_info "Copiando el archivo de configuración ${COLOR_YELLOW}.zshrc${COLOR_WHITE}..."
         cp "$ZSHRC_SRC" "$ZSHRC_DEST"
         sleep 2
         print_ok
@@ -146,7 +148,7 @@ fi
 #Instalación de Oh-my-Zsh y plugins estilo fish
 if [ ! -d $ZSH ]; then
     print_info "Instalando ${COLOR_YELLOW}Oh-My-Zsh${COLOR_WHITE}..."
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" > /dev/null 2>&1
     sleep 2
     print_ok
 else
@@ -156,7 +158,7 @@ fi
 ZSH_PLUGIN1_PATH="$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
 if [ ! -d $ZSH_PLUGIN1_PATH ]; then
     print_info "Instalando plugin ${COLOR_YELLOW}zsh-autosuggestions${COLOR_WHITE}..."
-    git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_PLUGIN1_PATH
+    git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_PLUGIN1_PATH > /dev/null 2>&1
     sleep 2
     print_ok
 else
@@ -166,7 +168,7 @@ fi
 ZSH_PLUGIN2_PATH="$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
 if [ ! -d $ZSH_PLUGIN2_PATH ]; then
     print_info "Instalando plugin ${COLOR_YELLOW}zsh-syntax-highlighting${COLOR_WHITE}..."
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_PLUGIN2_PATH
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_PLUGIN2_PATH > /dev/null 2>&1
     sleep 2
     print_ok
 else
@@ -206,8 +208,8 @@ fi
 FONT_DIR="/usr/local/share/fonts"
 FONT_NAME="Hack"
 if ! fc-list | grep -q "$FONT_NAME"; then
-    print_info "Instalando ${COLOR_YELLOW}Hack Nerd Font${COLOR_WHITE}..."
-    wget -q https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Hack.zip -O /tmp/Hack.zip > /dev/null 2>&1
+    print_info "Instalando la fuente ${COLOR_YELLOW}Hack Nerd Font${COLOR_WHITE}..."
+    wget -q https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Hack.zip -O /tmp/Hack.zip
     sudo unzip -q /tmp/Hack.zip -d $FONT_DIR > /dev/null 2>&1
     sudo fc-cache -f -v > /dev/null 2>&1
     print_ok
@@ -217,30 +219,41 @@ fi
 
 # Configuración de Neovim + Plugins
 # Plugins Path: $HOME/.local/share/nvim/plugged
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+if [ command -v nvim ]; then
+    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+else
+    print_warning "NeoVim no se instaló correctamente..."
+    sleep 1
+    print_pass
+fi
 
 NVIM_SRC="./files/init.vim"
-NVIM_DEST="$HOME/.config/nvim/lua/init.vim"
+NVIM_DEST="$HOME/.config/nvim/lua/"
+NVIM_CFG_FILE="$NVIM_DEST/init.vim"
 if [ -f $NVIM_SRC ]; then
-    if [ ! -f $NVIM_DEST ]; then
-        print_info "Copiando archivo ${COLOR_YELLOW}init.vim${COLOR_WHITE} al home del usuario..."
-        cp "$NVIM_SRC" "$NVIM_DEST"
-        sed -i "s/INTRAUSER/$INTRAUSER/g" "$NVIM_DEST"
-        sleep 1
-        print_ok
+    if [ ! -d $NVIM_DEST ]; then
+        mkdir -p $NVIM_DEST
     else
-        print_installed "Archivo ${COLOR_YELLOW}init.vim${COLOR_WHITE} ya existente. Cancelando copia..."
-        sleep 1
-        print_pass
-        if [ ! $(grep -q "let g:user42" $NVIM_DEST) ] && [ ! $(grep -q "let g:mail42" $NVIM_DEST) ]; then
-            print_info "Configurando variables para el header de 42..."
-            echo -e "let g:user42 = '${INTRAUSER}'" >> $NVIM_DEST
-            echo -e "let g:mail42 = '${INTRAUSER}@student.42malaga.com'" >> $NVIM_DEST
+        if [ ! -f $NVIM_CFG_FILE ]; then
+            print_info "Copiando archivo ${COLOR_YELLOW}init.vim${COLOR_WHITE} al home del usuario..."
+            cp "$NVIM_SRC" "$NVIM_DEST"
+            sed -i "s/INTRAUSER/$INTRAUSER/g" "$NVIM_CFG_FILE"
             sleep 1
             print_ok
         else
-            print_installed "El usuario de la Intra 42 ya está configurado."
+            print_installed "Archivo ${COLOR_YELLOW}init.vim${COLOR_WHITE} ya existente. Cancelando copia..."
+            sleep 1
+            print_pass
+            if [ ! $(grep -q "let g:user42" $NVIM_DEST) ] && [ ! $(grep -q "let g:mail42" $NVIM_DEST) ]; then
+                print_info "Configurando variables para el header de 42..."
+                echo -e "let g:user42 = '${INTRAUSER}'" >> $NVIM_DEST
+                echo -e "let g:mail42 = '${INTRAUSER}@student.42malaga.com'" >> $NVIM_DEST
+                sleep 1
+                print_ok
+            else
+                print_installed "El usuario de la Intra 42 ya está configurado."
+            fi
         fi
     fi
 else
@@ -256,7 +269,7 @@ if [ -f "$KEYMAPS_LUA_SRC" ]; then
         sleep 1
         print_ok
     else
-        print_warning "No se encontró el directorio de 'configs' de nvim. Creando los directorios..."
+        print_warning "No se encontró el directorio 'configs' de nvim. Creando los directorios..."
         mkdir -p $KEYMAPS_LUA_DEST
         sleep 1
         print_ok

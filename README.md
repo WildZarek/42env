@@ -180,7 +180,7 @@ LazyGit es ideal para quienes prefieren usar la terminal pero quieren una forma 
 
 ## Atajos de teclado NeoVim
 
-> Funcionan únicamente en el modo **NORMAL**
+> Estos atajos son para utilizar en el modo **NORMAL**
 
 | Atajo | Descripción |
 | --- | --- |

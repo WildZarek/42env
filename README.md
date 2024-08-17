@@ -154,7 +154,7 @@ Se decidió incluir `lsd` ya que mejora la legibilidad en la terminal aprovechan
 /usr/bin/lsd -lha --group-dirs=first
 ```
 
-<img src=assets/018_lsd_example.png alt="header_logo" align="center">
+<img src=assets/010_lsd_example.png alt="header_logo" align="center">
 
 Si por comodidad queremos ver los permisos de los archivos y carpetas en base octal, `llo` es un alias de:
 
@@ -162,7 +162,7 @@ Si por comodidad queremos ver los permisos de los archivos y carpetas en base oc
 /usr/bin/lsd -lha --group-dirs=first --permission octal
 ```
 
-<img src=assets/019_lsd_example_octal.png alt="header_logo" align="center">
+<img src=assets/011_lsd_example_octal.png alt="header_logo" align="center">
 
 ## BAT (batcat)
 
@@ -175,7 +175,7 @@ LazyGit es ideal para quienes prefieren usar la terminal pero quieren una forma 
 > ¡Por probarlo no pierdes nada!
 
 <div align="center">
-  <img src="assets/021_lazy_git.png" alt="lazy_git">
+  <img src="assets/012_lazy_git.png" alt="lazy_git">
 </div>
 
 ## Atajos de teclado NeoVim

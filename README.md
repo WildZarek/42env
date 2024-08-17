@@ -1,6 +1,5 @@
-
 <div align="center">
-  <img src="assets/42_env_banner.png" alt="42 Env Banner">
+  <img src="assets/42_env_banner.png" alt="42 Env Banner" />
   <p>42 ENVironment Configuration Script</p>
 </div>
 
@@ -64,9 +63,7 @@ Este script instala el siguiente software en el caso de que no esté instalado:
 
 # Instalación
 
-<div align="center">
-  <img src="assets/000_running.png" alt="Script Running">
-</div>
+<img src="assets/000_running.png" alt="Script running" align="center" />
 
 Primero descargamos el repositorio y entramos en la carpeta 42env del repositorio clonado.
 
@@ -79,9 +76,8 @@ Asigna permisos de ejecución al script y ejecútalo. Se recomienda tener siempr
 ```bash
 chmod +x 42env.sh; ./42env.sh
 ```
-<div align="center">
-  <img src="assets/001_install_log.png" alt="Installation Log">
-</div>
+
+<img src="assets/001_install_log.png" alt="Installation log" align="center" />
 
 # Durante la ejecución
 
@@ -102,8 +98,8 @@ Si es tu caso, pulsa la tecla `Espacio`. La configuración continuará y finaliz
 
 Si ejecutas `nvim` sin ningún nombre de archivo, se abrirá a la izquierda el explorador de archivos en la ruta actual para que puedas navegar entre las distintas carpetas y archivos. Si se ejecuta pasando un nombre de archivo, entonces el foco cambia directamente a la ventana del archivo.
 
-<img src="assets/002_neovim.png" alt="NeoVim without file" align="center">
-<img src="assets/003_neovim_file.png" alt="NeoVim with file" align="center">
+<img src="assets/002_neovim.png" alt="NeoVim without file" align="center" />
+<img src="assets/003_neovim_file.png" alt="NeoVim with file" align="center" />
 
 ## Uso básico de NeoVim
 
@@ -111,12 +107,30 @@ En NeoVim se han definido multitud de atajos de teclado para el uso diario que f
 
 **Tecla <kbd>F1</kbd>:** Inserta el header de 42 y pone el editor en modo `Insert`.
 
-<img src="assets/004_header_42.png" alt="Header 42" align="center">
+<img src="assets/004_header_42.png" alt="Header 42" align="center" />
 
 **Tecla <kbd>F2</kbd>:** Formatea automáticamente el código siguiendo la Norma para presentarlo a la `norminette`.
 
-<img src="assets/005_example_code.png" alt="Example of Wrong Code">
-<img src="assets/006_fixed_code.png" alt="Code fixed">
+<img src="assets/005_example_code.png" alt="Example of wrong code" align="center" />
+<img src="assets/006_fixed_code.png" alt="Code fixed" align="center" />
+
+**Tecla <kbd>F3</kbd>:** Ejecuta `norminette` con las flags `-R CheckForbiddenSourceHeader` sobre el archivo actual.
+
+<img src="assets/007_errors_norminette.png" alt="Errors in code syntax" align="center" />
+
+**Tecla <kbd>Ctrl</kbd>+<kbd>q</kbd>:** Cierra la ventana activa / `norminette` / Cierra `nvim` / Equivale a `:q`.
+
+<img src="assets/008_norminette_ok.png" alt="Norminette passed" align="center" />
+
+**Tecla <kbd>Ctrl</kbd>+<kbd>s</kbd>:** Guarda el documento activo [Equivale a `:w`]
+
+**Tecla <kbd>Ctrl</kbd>+<kbd>f</kbd>:** Guarda y cierra el documento activo [Equivale a `:wq`]
+
+**Tecla <kbd>F4</kbd>:** Abre o cierra el explorador de archivos.
+
+<img src="assets/009_nerdtree_explorer.png" alt="NERDTree Explorer" align="center" />
+
+> **Nota:** Puedes ver los demás [atajos de teclado aquí](#atajos-de-teclado-neovim)
 
 # Extras
 
@@ -164,7 +178,9 @@ LazyGit es ideal para quienes prefieren usar la terminal pero quieren una forma 
   <img src="assets/021_lazy_git.png" alt="lazy_git">
 </div>
 
-## Atajos de teclado (Neovim) en modo NORMAL
+## Atajos de teclado NeoVim
+
+> Funcionan únicamente en el modo **NORMAL**
 
 | Atajo | Descripción |
 | --- | --- |

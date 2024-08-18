@@ -258,7 +258,7 @@ if [ -f $NVIM_SRC ]; then
         mkdir -p $NVIM_DEST
     else
         if [ ! -f $NVIM_CFG_FILE ]; then
-            print_info "Copiando archivo ${COLOR_YELLOW}init.vim${COLOR_WHITE} al home del usuario..."
+            print_info "Copiando archivo ${COLOR_YELLOW}init.vim${COLOR_WHITE}..."
             cp "$NVIM_SRC" "$NVIM_CFG_FILE"
             sed -i "s/INTRAUSER/$INTRAUSER/g" "$NVIM_CFG_FILE"
             sleep 1

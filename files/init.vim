@@ -12,9 +12,6 @@ autocmd FileType c,cpp setlocal shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
 
-let g:user42 = 'INTRAUSER'
-let g:mail42 = 'INTRAUSER@student.42malaga.com'
-
 call plug#begin()
 
 Plug 'https://github.com/42Paris/42header'              " 42 Header for Students
@@ -57,3 +54,7 @@ let g:airline_symbols.linenr = ''
 
 " Loads the custom keybindings
 lua require('configs.keymaps')
+
+" Config for 42 Header
+let g:user42 = 'INTRAUSER'
+let g:mail42 = 'INTRAUSER@student.42malaga.com'

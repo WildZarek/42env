@@ -243,6 +243,7 @@ if [ $(which nvim) ]; then
         print_warning "El gestor de plugins ${COLOR_YELLOW}Vim-Plug${COLOR_WHITE} para NeoVim no se instaló correctamente..."
         sleep 1
         print_error
+    fi
 else
     print_warning "${COLOR_YELLOW}NeoVim${COLOR_WHITE} no se instaló correctamente..."
     sleep 1

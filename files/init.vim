@@ -17,7 +17,7 @@ let g:mail42 = 'INTRAUSER@student.42malaga.com'
 
 call plug#begin()
 
-Plug 'https://github.com/42Paris/42header'              " 42 header for Students
+Plug 'https://github.com/42Paris/42header'              " 42 Header for Students
 Plug 'https://github.com/cacharle/c_formatter_42.vim'   " 42 C Formatter for Students
 Plug 'https://github.com/ryanoasis/vim-devicons'        " Developer Icons
 Plug 'https://github.com/preservim/nerdtree'            " NERDTree

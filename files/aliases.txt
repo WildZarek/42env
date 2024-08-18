@@ -1,3 +1,4 @@
+
 # CUSTOM ALIASES by dsarmien
 alias 42nt='norminette -R CheckForbiddenSourceHeader'
 alias 42ft='c_formatter_42 $1 > /dev/null 2>&1'

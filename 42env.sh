@@ -166,7 +166,7 @@ ALIASES_FILE="./files/aliases.txt"
 if [ -f "$ZSHRC_SRC" ]; then
     if [ -f $ZSHRC_DEST ]; then
         print_info "Copiando el archivo de configuración ${COLOR_YELLOW}.zshrc${COLOR_WHITE}..."
-        mv "$ZSHRC_DEST" ".zshrc.pre-42env"
+        mv "$ZSHRC_DEST" "$HOME/.zshrc.pre-42env"
         cp "$ZSHRC_SRC" "$ZSHRC_DEST"
         sleep 2
         print_ok
@@ -259,7 +259,7 @@ if [ -f $NVIM_SRC ]; then
     else
         if [ ! -f $NVIM_CFG_FILE ]; then
             print_info "Copiando archivo ${COLOR_YELLOW}init.vim${COLOR_WHITE} al home del usuario..."
-            cp "$NVIM_SRC" "$NVIM_DEST"
+            cp "$NVIM_SRC" "$NVIM_CFG_FILE"
             sed -i "s/INTRAUSER/$INTRAUSER/g" "$NVIM_CFG_FILE"
             sleep 1
             print_ok

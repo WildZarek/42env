@@ -25,7 +25,6 @@ Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Retro Scheme
 Plug 'https://github.com/ap/vim-css-color'              " CSS Color Preview
 Plug 'https://github.com/tpope/vim-surround'            " Surrounding ysw
 Plug 'https://github.com/mg979/vim-visual-multi'        " CTRL + N for multiple cursors
-Plug 'https://github.com/wakatime/vim-wakatime'         " Wakatime for programming time metrics
 
 call plug#end()
 

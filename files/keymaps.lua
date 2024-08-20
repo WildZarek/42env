@@ -8,42 +8,20 @@ function InsertHeaderWithNewline()
 end
 
 -- Shorten function name
-if vim.fn.has('nvim-0.6') == 1 then
-  -- It is nvim 0.6
-  local keymap = vim.api.nvim_set_keymap
-  keymap('n', '<F1>', ':lua InsertHeaderWithNewline()<CR>', opts)
-                                                            -- Mapeo F2 está asignado a 42 Formatter.
-  keymap('n', '<F3>', ':Norminette<CR>', opts)              -- Mapear F3 para ejecutar Norminette
-  keymap('n', '<F4>', ':NERDTreeToggle<CR>', opts)          -- Mapear F4 para mostrar el explorador NERDTree en la ruta actual
-  keymap('n', '<F5>', ':TagbarToggle<CR>', opts)            -- Mapear F5 para mostrar los tags a la derecha
-  keymap('n', '<C-q>', ':q!<CR>', opts)                     -- Mapear Ctrl+q para cerrar la ventana actual
-  keymap('n', '<C-s>', ':w<CR>', opts)                      -- Mapear Ctrl+s para guardar el documento actual
-  keymap('n', '<C-f>', ':wq<CR>', opts)                     -- Mapear Ctrl+f para guardar y cerrar el documento actual
-  keymap('n', '<C-h>', '<C-w><C-h>', opts)                  -- Mapear Ctrl+h para movernos a la ventana izquierda
-  keymap('n', '<C-l>', '<C-w><C-l>', opts)                  -- Mapear Ctrl+l para movernos a la ventana derecha
-  keymap('n', '<C-j>', '<C-w><C-j>', opts)                  -- Mapear Ctrl+j para movernos a la ventana inferior
-  keymap('n', '<C-k>', '<C-w><C-k>', opts)                  -- Mapear Ctrl+k para movernos a la ventana superior
-  keymap('n', '<C-Up>', ':resize -2<CR>', opts)             -- Mapear Ctrl+↑ para redimensionar la ventana activa hacia arriba (Horizontal)
-  keymap('n', '<C-Down>', ':resize +2<CR>', opts)           -- Mapear Ctrl+↓ para redimensionar la ventana activa hacia abajo (Horizontal)
-  keymap('n', '<C-Left>', ':vertical resize -2<CR>', opts)  -- Mapear Ctrl+← para redimensionar la ventana activa hacia la izquierda (Vertical)
-  keymap('n', '<C-Right>', ':vertical resize +2<CR>', opts) -- Mapear Ctrl+→ para redimensionar la ventana activa hacia la derecha (Vertical)
-elseif vim.fn.has('nvim-0.7') == 1 then
-  -- It is nvim 0.7
-  local keymap = vim.keymap
-  keymap.set('n', '<F1>', ':lua InsertHeaderWithNewline()<CR>', opts)
-  -- Mapeo F2 está asignado a 42 Formatter.
-  keymap.set('n', '<F3>', ':Norminette<CR>', opts)              -- Mapear F3 para ejecutar Norminette
-  keymap.set('n', '<F4>', ':NERDTreeToggle<CR>', opts)          -- Mapear F4 para mostrar el explorador NERDTree en la ruta actual
-  keymap.set('n', '<F5>', ':TagbarToggle<CR>', opts)            -- Mapear F5 para mostrar los tags a la derecha
-  keymap.set('n', '<C-q>', ':q!<CR>', opts)                     -- Mapear Ctrl+q para cerrar la ventana actual
-  keymap.set('n', '<C-s>', ':w<CR>', opts)                      -- Mapear Ctrl+s para guardar el documento actual
-  keymap.set('n', '<C-f>', ':wq<CR>', opts)                     -- Mapear Ctrl+f para guardar y cerrar el documento actual
-  keymap.set('n', '<C-h>', '<C-w><C-h>', opts)                  -- Mapear Ctrl+h para movernos a la ventana izquierda
-  keymap.set('n', '<C-l>', '<C-w><C-l>', opts)                  -- Mapear Ctrl+l para movernos a la ventana derecha
-  keymap.set('n', '<C-j>', '<C-w><C-j>', opts)                  -- Mapear Ctrl+j para movernos a la ventana inferior
-  keymap.set('n', '<C-k>', '<C-w><C-k>', opts)                  -- Mapear Ctrl+k para movernos a la ventana superior
-  keymap.set('n', '<C-Up>', ':resize -2<CR>', opts)             -- Mapear Ctrl+↑ para redimensionar la ventana activa hacia arriba (Horizontal)
-  keymap.set('n', '<C-Down>', ':resize +2<CR>', opts)           -- Mapear Ctrl+↓ para redimensionar la ventana activa hacia abajo (Horizontal)
-  keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', opts)  -- Mapear Ctrl+← para redimensionar la ventana activa hacia la izquierda (Vertical)
-  keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', opts) -- Mapear Ctrl+→ para redimensionar la ventana activa hacia la derecha (Vertical)
-end
+local keymap = vim.keymap
+keymap.set('n', '<F1>', ':lua InsertHeaderWithNewline()<CR>', opts)
+                                                              -- Mapeo F2 está asignado a 42 Formatter.
+keymap.set('n', '<F3>', ':Norminette<CR>', opts)              -- Mapear F3 para ejecutar Norminette
+keymap.set('n', '<F4>', ':NERDTreeToggle<CR>', opts)          -- Mapear F4 para mostrar el explorador NERDTree en la ruta actual
+keymap.set('n', '<F5>', ':TagbarToggle<CR>', opts)            -- Mapear F5 para mostrar los tags a la derecha
+keymap.set('n', '<C-q>', ':q!<CR>', opts)                     -- Mapear Ctrl+q para cerrar la ventana actual
+keymap.set('n', '<C-s>', ':w<CR>', opts)                      -- Mapear Ctrl+s para guardar el documento actual
+keymap.set('n', '<C-f>', ':wq<CR>', opts)                     -- Mapear Ctrl+f para guardar y cerrar el documento actual
+keymap.set('n', '<C-h>', '<C-w><C-h>', opts)                  -- Mapear Ctrl+h para movernos a la ventana izquierda
+keymap.set('n', '<C-l>', '<C-w><C-l>', opts)                  -- Mapear Ctrl+l para movernos a la ventana derecha
+keymap.set('n', '<C-j>', '<C-w><C-j>', opts)                  -- Mapear Ctrl+j para movernos a la ventana inferior
+keymap.set('n', '<C-k>', '<C-w><C-k>', opts)                  -- Mapear Ctrl+k para movernos a la ventana superior
+keymap.set('n', '<C-Up>', ':resize -2<CR>', opts)             -- Mapear Ctrl+↑ para redimensionar la ventana activa hacia arriba (Horizontal)
+keymap.set('n', '<C-Down>', ':resize +2<CR>', opts)           -- Mapear Ctrl+↓ para redimensionar la ventana activa hacia abajo (Horizontal)
+keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', opts)  -- Mapear Ctrl+← para redimensionar la ventana activa hacia la izquierda (Vertical)
+keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', opts) -- Mapear Ctrl+→ para redimensionar la ventana activa hacia la derecha (Vertical)

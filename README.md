@@ -116,12 +116,11 @@ En NeoVim se han definido multitud de atajos de teclado para el uso diario que f
 
 <img src="assets/005_example_code.png" alt="Example of wrong code" align="center" />
 <img src="assets/006_fixed_code.png" alt="Code fixed" align="center" />
+<img src="assets/008_norminette_ok.png" alt="Norminette passed" align="center" />
 
 **Tecla <kbd>F3</kbd>:** Ejecuta `norminette` con las flags `-R CheckForbiddenSourceHeader` sobre el archivo actual.
 
 <img src="assets/007_errors_norminette.png" alt="Errors in code syntax" align="center" />
-
-<img src="assets/008_norminette_ok.png" alt="Norminette passed" align="center" />
 
 **Tecla <kbd>Ctrl</kbd>+<kbd>q</kbd>:** Fuerza el cierre de la ventana activa [Equivale a `:q!`]
 

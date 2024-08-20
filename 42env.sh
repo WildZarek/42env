@@ -95,8 +95,8 @@ check_and_install "gcc" "gcc"
 check_and_install "make" "make"
 check_and_install "rg" "ripgrep"
 check_and_install "fdfind" "fd-find"
-check_and_install "nvim" "neovim"
 check_and_install "luarocks" "luarocks"
+check_and_install "xclip" "xclip"
 
 #Instalaciones opcionales
 #check_and_install "pipx" "pipx"
@@ -109,9 +109,10 @@ sleep 3
 
 # Fix for 'fdfind' command in Debian
 FD_SYMLINK_PATH="$HOME/.local/bin/fd"
+FDFIND_PATH="$HOME/.local/bin/fdfind"
 if [ ! $(which fd) ]; then
-    if [ ! -L $FD_SYMLINK_PATH ]; then
-        ln -s $(which fdfind) $FD_SYMLINK_PATH
+    if [ ! -L $FD_SYMLINK_PATH ]; thens
+        ln -s $FDFIND_PATH $FD_SYMLINK_PATH
     fi
 fi
 
@@ -228,6 +229,16 @@ if ! fc-list | grep -q "$FONT_NAME"; then
     print_ok
 else
     print_installed "La fuente ${COLOR_YELLOW}Hack Nerd Font${COLOR_WHITE} ya está instalada."
+fi
+
+# Instalación de Nvim desde Snap
+if command -v nvim > /dev/null 2>&1; then
+    print_installed "${COLOR_YELLOW}NeoVim${COLOR_WHITE} ya está instalado."
+else
+    print_info "Instalando ${COLOR_YELLOW}Neovim${COLOR_WHITE}..."
+    sudo snap install --classic nvim > /dev/null 2>&1
+    sleep 2
+    print_ok
 fi
 
 # Configuración de Neovim + Plugins

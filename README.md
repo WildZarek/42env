@@ -6,17 +6,20 @@
 # Descripción
 
 Automatiza la instalación y configuración del entorno básico necesario para programar en el Cursus de 42.<br>
-Testeado en las siguientes distribuciones:
+Testeado en las siguientes distribuciones (INFORMACIÓN TEMPORAL):
 
-| Distribución                                                   | Codename      |
-| ----------------                                               | ------------- |
-| [Ubuntu 22.04 LTS](https://releases.ubuntu.com/jammy/)         | Jammy         |
-| [Debian 12 LTS (WSL)](https://www.debian.org/releases/stable/) | Bookworm      |
+| Distribución                                                   | Codename      | Estado |
+| ----------------                                               | ------------- | ------ |
+| [Ubuntu 22.04 LTS (WSL)](https://releases.ubuntu.com/jammy/)   | Jammy         | ?      |
+| [Ubuntu 24.04 LTS (WSL)](https://releases.ubuntu.com/noble/)   | Noble         | F      |
+| [Debian 12 LTS (WSL)](https://www.debian.org/releases/stable/) | Bookworm      | F      |
 
-# Importante
+# Problemas Conocidos
 
-La ejecución de `42env.sh` en entornos basados en `WSL (Windows Subsystem for Linux)` actualmente da ciertos problemas relacionados con la instalación de <strong>'norminette'</strong> y <strong>'c_formatter_42'</strong> debido a que la instalación (en general) de paquetes con `pip/pip3` está limitada. La solución más simple es instalar `pipx` o bien crear un `virtualenv` desde el que instalar estos paquetes (lo cual es recomendable).
-Luego es necesario incluir el directorio 'bin' del virtualenv en el PATH del sistema para que se pueda llamar a los binarios correspondientes desde fuera del mismo. Al finalizar la ejecución del script, en el momento que se nos pide reiniciar el sistema, también nos dará error si estamos bajo WSL, esto es debido a que no podemos hacer `sudo reboot` como haríamos normalmente en nuestra máquina virtual. La solución es tan simple como cerrar WSL con el comando `exit` y volver a lanzar nuestra distro bajo WSL.
+Es posible que la ejecución de `42env.sh` en algunos entornos basados en `WSL (Windows Subsystem for Linux)` ocasione ciertos problemas relacionados con la instalación de paquetes con `pip/pip3`. La solución más simple es instalar `pipx` o bien crear un `virtualenv` en el que instalar estos paquetes (lo cual es recomendable).
+Luego es necesario incluir el directorio 'bin' del virtualenv en el PATH del sistema para que se pueda llamar a los binarios correspondientes desde fuera del mismo.
+
+Al finalizar la ejecución del script, en el momento que se nos pide reiniciar el sistema, también nos dará error si estamos usando Debian bajo WSL, esto es debido a que no podemos hacer `sudo reboot` como haríamos normalmente en nuestra máquina virtual. La solución es tan simple como cerrar WSL con el comando `exit` y volver a lanzar nuestra distro bajo WSL. Las distribuciones que tengan estos problemas están marcadas con el estado `F`.
 
 # Índice
 
@@ -65,7 +68,7 @@ Este script instala el siguiente software en el caso de que no esté instalado:
 
 <img src="assets/000_running.png" alt="Script running" align="center" />
 
-Primero descargamos el repositorio y entramos en la carpeta 42env del repositorio clonado.
+Primero clonamos este repositorio y entramos en la carpeta `42env` creada.
 
 ```bash
 git clone https://github.com/WildZarek/42env.git; cd 42env
@@ -148,7 +151,7 @@ En NeoVim se han definido multitud de atajos de teclado para el uso diario que f
 
 ## LSD (LSDeluxe)
 
-Se decidió incluir `lsd` ya que mejora la legibilidad en la terminal aprovechando las <strong>Hack Nerd Fonts</strong> instaladas. El alias `ll` equivale a:
+Se incluye `lsd` ya que mejora la legibilidad en la terminal aprovechando las <strong>Hack Nerd Fonts</strong> instaladas en el sistema. El alias `ll` equivale a:
 
 ```bash
 /usr/bin/lsd -lha --group-dirs=first
@@ -246,7 +249,7 @@ LazyGit es ideal para quienes prefieren usar la terminal pero quieren una forma 
 | `Ctrl` + `Shift` + `G` | Reinicia el estado de la terminal y limpia la pantalla |
 
 # En proceso...
-Próximamente intentaré publicar el proyecto con una configuración alternativa para su ejecución en usuarios con permisos limitados.
+Próximamente se publicará el proyecto con una configuración alternativa para su ejecución en entornos donde los usuarios tengan permisos limitados (que no dispongan de `sudo`).
 
 > ##### Si consideras útil este proyecto, apóyalo haciendo "★ Star" en el repositorio. ¡Gracias!
 

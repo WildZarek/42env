@@ -31,7 +31,7 @@ Al finalizar la ejecución del script, en el momento que se nos pide reiniciar e
     - [Uso básico de NeoVim](#uso-básico-de-neovim)
 6. [Extras](#extras)
     - [Oh-My-Zsh](#oh-my-zsh)
-    - [zsh-autocompletions](#zsh-autocompletions)
+    - [zsh-autosuggestions](#zsh-autosuggestions)
     - [zsh-syntax-highlighting](#zsh-syntax-highlighting)
     - [LSD (LSDeluxe)](#lsd-lsdeluxe)
     - [BAT (batcat)](#batcat)
@@ -44,7 +44,7 @@ Este script instala el siguiente software en el caso de que no esté instalado:
 
 - **zsh |** [Shell ZSH](https://www.zsh.org/)
 - **oh-my-zsh |** [Oh-My-Zsh](https://ohmyz.sh/)
-- **zsh-autocompletions |** [Plugin zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+- **zsh-autosuggestions |** [Plugin zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 - **zsh-syntax-highlighting |** [Plugin zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 - **terminator |** [Terminator](https://gnome-terminator.org/)
 - **git |** [Git Fast Version Control](https://git-scm.com/doc)
@@ -138,15 +138,15 @@ En NeoVim se han definido multitud de atajos de teclado para el uso diario que f
 
 ## Oh-My-Zsh
 
-> Pendiente de redactar esta sección...
+<strong>Oh My Zsh</strong> es una capa de personalización en formato framework que se instala sobre Zsh. Proporciona una amplia gama de características y mejoras, como autocompletado avanzado, atajos de teclado, sugerencias de comandos, temas personalizables y una amplia biblioteca de plugins.
 
-## zsh-autocompletions
+## zsh-autosuggestions
 
-> Pendiente de redactar esta sección...
+<strong>zsh-autosuggestions</strong> es un plugin que a medida que escribimos un comando, nos sugiere y recuerda comandos escritos anteriormente (que residen en el historial de la terminal) en color gris de fondo, para que sea más sencillo para nosotros identificarlos. Pulsando la tecla <kbd>→</kbd> le decimos a zsh que lo recupere íntegro, lo que puede ser útil para comandos largos. Similar a como lo hace la shell `fish` por defecto.
 
 ## zsh-syntax-highlighting
 
-> Pendiente de redactar esta sección...
+<strong>zsh-syntax-highlighting</strong> proporciona resaltado de color de comandos, el cuál viene de una característica que incorporaba inicialmente la shell `fish`. Al escribir un comando en la terminal nos aparecerá en rojo si no está instalado en el sistema o en verde si está disponible para utilizar. De esta forma sabremos, a medida que vamos escribiendo los comandos, si los estamos escribiendo bien (o por lo contrario, tenemos erratas) o si no se encuentra instalado un comando, por ejemplo, incluso antes de pulsar la tecla <kbd>ENTER</kbd>
 
 ## LSD (LSDeluxe)
 
@@ -168,7 +168,13 @@ Si por comodidad queremos ver los permisos de los archivos y carpetas en base oc
 
 ## BAT (batcat)
 
-> Pendiente de redactar esta sección...
+<strong>bat</strong> es una alternativa moderna al clásico comando `cat` de Linux. Ofrece algunas características únicas, como números de línea de impresión bonita, paginación y resaltado de sintaxis.
+
+El alias `bat` (admite un parámetro para indicar el nombre del archivo) equivale a:
+
+```bash
+/usr/bin/batcat <filename>
+```
 
 ## LazyGit
 
@@ -248,7 +254,7 @@ LazyGit es ideal para quienes prefieren usar la terminal pero quieren una forma 
 | `Ctrl` + `Shift` + `G` | Reinicia el estado de la terminal y limpia la pantalla |
 
 # En proceso...
-Próximamente se publicará el proyecto con una configuración alternativa para su ejecución en entornos donde los usuarios tengan permisos limitados (que no dispongan de `sudo`).
+Próximamente se publicará el proyecto con una configuración alternativa para su ejecución en entornos Android bajo Termux.
 
 > ##### Si consideras útil este proyecto, apóyalo haciendo "★ Star" en el repositorio. ¡Gracias!
 

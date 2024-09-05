@@ -35,6 +35,7 @@ Al finalizar la ejecución del script, en el momento que se nos pide reiniciar e
     - [zsh-syntax-highlighting](#zsh-syntax-highlighting)
     - [LSD (LSDeluxe)](#lsd-lsdeluxe)
     - [BAT (batcat)](#batcat)
+    - [xclip](#xclip)
     - [LazyGit](#lazygit)
 7. [En proceso...](#en-proceso)
 
@@ -57,12 +58,14 @@ Este script instala el siguiente software en el caso de que no esté instalado:
 - **nerd fonts |** [Iconic font aggregator, collection, and patcher](https://www.nerdfonts.com/) | Hack Nerd Font
 - **lsd |** [The next gen ls command](https://github.com/lsd-rs/lsd)
 - **bat |** [A cat clone with wings](https://github.com/sharkdp/bat)
+- **xclip |** [Command line interface to the X11 clipboard](https://github.com/astrand/xclip)
 - **lazygit |** [Simple terminal UI for git commands](https://github.com/jesseduffield/lazygit)
 - Atajos de teclado para 'nvim' y config para .zshrc
 
 # Recomendaciones previas
 
-**IMPORTANTE:** Antes de comenzar el proceso se recomienda hacer copia de seguridad o un snapshot del estado actual de la máquina virtual. Este script está pensado para uso en nuestro ordenador personal.
+> [!WARNING]
+> Antes de comenzar el proceso se recomienda hacer copia de seguridad o un snapshot del estado actual de la máquina virtual. Este script está pensado para uso en nuestro ordenador personal.
 
 # Instalación
 
@@ -85,7 +88,7 @@ chmod +x 42env.sh; ./42env.sh
 # Durante la ejecución
 
 Al ejecutar el script, te pedirá tu usuario de la Intra 42, escríbelo y pulsa `Enter`<br>
-Este usuario se usará para configurar el header de 42 para vim/nvim.
+Este usuario se usará para configurar el header de 42 para nvim.
 
 Una vez que haya terminado todo el proceso, pulsa la tecla `Enter` y se reiniciará el equipo.<br>
 Después de arrancar el sistema, abre Terminator, maximiza la ventana y ejecuta `nvim`, acto seguido escribe `:PlugInstall` para que se complete la configuración de Neovim.
@@ -132,7 +135,8 @@ En NeoVim se han definido multitud de atajos de teclado para el uso diario que f
 
 <img src="assets/009_nerdtree_explorer.png" alt="NERDTree Explorer" align="center" />
 
-> **Nota:** Puedes ver los demás [atajos de teclado aquí](#atajos-de-teclado-neovim)
+> [!NOTE]
+> Puedes ver los demás [atajos de teclado aquí](#atajos-de-teclado-neovim)
 
 # Extras
 
@@ -176,10 +180,38 @@ El alias `bat` (admite un parámetro para indicar el nombre del archivo) equival
 /usr/bin/batcat <filename>
 ```
 
+## xclip
+
+<strong>xclip</strong> es una aplicación que nos permite introducir texto en el portapapeles y recuperar texto de él desde la línea de comandos. El texto recuperado puede haber sido introducido por cualquier otra aplicación.
+
+Asímismo, el texto que se introduce en el portapapeles a través de <strong>xclip</strong> puede ser utilizado por cualquier otra aplicación.
+
+Ejemplos de uso:
+```bash
+echo "Hola mundo" | xclip -i
+```
+
+El texto «Hola mundo» pasará a estar disponible para el resto de aplicaciones.
+Del mismo modo, para recuperar el texto del portapapeles y enviarlo a la salida estándar debe especificarse la opción `-o`:
+
+```bash
+xclip -o
+Hola mundo
+```
+
+Podemos usar pipes para enviar al portapapeles lo que queramos, por ejemplo el contenido completo de un archivo:
+
+```bash
+cat archivo.txt | xclip
+```
+
+En definitiva, es una herramienta muy útil que nos ahorra tiempo a la hora de trabajar con el portapapeles.
+
 ## LazyGit
 
 LazyGit es ideal para quienes prefieren usar la terminal pero quieren una forma más cómoda y rápida de manejar Git sin tener que escribir todos los comandos manualmente. Resulta especialmente útil para desarrolladores que trabajan con repositorios grandes y complejos, ya que facilita la visualización de los cambios y permite moverse ágilmente entre las distintas secciones del repositorio.
 
+> [!NOTE]
 > ¡Por probarlo no pierdes nada!
 
 <div align="center">
@@ -188,6 +220,7 @@ LazyGit es ideal para quienes prefieren usar la terminal pero quieren una forma 
 
 ## Atajos de teclado NeoVim
 
+> [!NOTE]
 > Estos atajos son para utilizar en el modo **NORMAL**
 
 | Atajo | Descripción |
@@ -254,9 +287,10 @@ LazyGit es ideal para quienes prefieren usar la terminal pero quieren una forma 
 | `Ctrl` + `Shift` + `G` | Reinicia el estado de la terminal y limpia la pantalla |
 
 # En proceso...
-Próximamente se publicará el proyecto con una configuración alternativa para su ejecución en entornos Android bajo Termux.
+En el futuro se publicará una versión del proyecto para su instalación en entornos Android bajo Termux.
 
-> ##### Si consideras útil este proyecto, apóyalo haciendo "★ Star" en el repositorio. ¡Gracias!
+> [!NOTE]
+> Si consideras útil este proyecto, apóyalo haciendo clic en <strong>★ Star</strong> en el repositorio. ¡Gracias!
 
 # ¡Happy hacking & coding! 😎
 

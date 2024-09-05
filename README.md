@@ -290,7 +290,7 @@ LazyGit es ideal para quienes prefieren usar la terminal pero quieren una forma 
 En el futuro se publicará una versión del proyecto para su instalación en entornos Android bajo Termux.
 
 > [!NOTE]
-> Si consideras útil este proyecto, apóyalo haciendo clic en <strong>★ Star</strong> en el repositorio. ¡Gracias!
+> Si consideras útil este proyecto, apóyalo dando <strong>★ Star</strong> en el repositorio. ¡Gracias!
 
 # ¡Happy hacking & coding! 😎
 

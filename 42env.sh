@@ -111,7 +111,7 @@ sleep 3
 FD_SYMLINK_PATH="$HOME/.local/bin/fd"
 FDFIND_PATH="$HOME/.local/bin/fdfind"
 if [ ! $(which fd) ]; then
-    if [ ! -L $FD_SYMLINK_PATH ]; thens
+    if [ ! -L $FD_SYMLINK_PATH ]; then
         ln -s $FDFIND_PATH $FD_SYMLINK_PATH
     fi
 fi

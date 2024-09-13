@@ -5,6 +5,10 @@ set number
 set relativenumber
 set syntax=on
 set mouse=a
+" Show non-space whitespace
+set list
+" Show listchars
+set lcs=space:•,tab:\⁞\ ,trail:‿,eol:⤶
 
 autocmd FileType c,cpp setlocal shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab splitbelow
 
@@ -25,6 +29,7 @@ Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Retro Scheme
 Plug 'https://github.com/ap/vim-css-color'              " CSS Color Preview
 Plug 'https://github.com/tpope/vim-surround'            " Surrounding ysw
 Plug 'https://github.com/mg979/vim-visual-multi'        " CTRL + N for multiple cursors
+Plug 'https://github.com/wakatime/vim-wakatime'		" Wakatime Plugin for Metrics
 
 call plug#end()
 
@@ -55,5 +60,5 @@ let g:airline_symbols.linenr = ''
 lua require('configs.keymaps')
 
 " Config for 42 Header
-let g:user42 = 'INTRAUSER'
-let g:mail42 = 'INTRAUSER@student.42malaga.com'
+let g:user42 = 'dsarmien'
+let g:mail42 = 'dsarmien@student.42malaga.com'

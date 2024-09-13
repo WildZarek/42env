@@ -2,17 +2,17 @@
 # CUSTOM ALIASES by dsarmien
 alias 42nt='norminette -R CheckForbiddenSourceHeader'
 alias 42ft='c_formatter_42 $1 > /dev/null 2>&1'
+alias bat='bat -l perl --style=numbers'
 alias c='clear'
-alias bat='batcat $1'
 alias caa='cat */*'
 alias caf='cat $1'
 alias cca='cc -Wall -Wextra -Werror -o $1 *.c'
-alias ccf='cc -Wall -Wextra -Werror $1'
+#alias ccf='cc -Wall -Wextra -Werror $1'
 alias ccg='cc -Wall -Wextra -Werror -g -o $1'
-alias cfgf='vim $HOME/.config/fish/config.fish'
-alias cfgi='vim $HOME/.config/nvim/init.vim'
-alias cfgv='vim $HOME/.vimrc'
-alias cfgz='vim $HOME/.zshrc'
+alias nv='nvim.appimage'
+alias cfgi='nv $HOME/.config/nvim/init.vim'
+alias cfgv='nv $HOME/.vimrc'
+alias cfgz='nv $HOME/.zshrc'
 alias gcf='gcc -Wall -Wextra -Werror -o $1'
 alias gta='git add $1'
 alias gtaa='git add .'
@@ -21,11 +21,15 @@ alias gtpu='git push -u origin master'
 alias gtp='git push'
 alias gts='git status'
 alias gtd='git diff \$1'
-alias gtl="git log --format='%h | %ce | %cs | %ch' -n10"
+alias gtl="git log --format='%h | %ce | %cs | %ch | %s' -n10"
 alias gtt='git tag | sort -V'
 alias la='ls -la */*'
-alias ls='/usr/bin/lsd --group-dirs=first'
-alias ll='/usr/bin/lsd -lha --group-dirs=first'
-alias llo='/usr/bin/lsd -lha --group-dirs=first --permission octal'
-alias nv='/usr/bin/nvim'
+alias ls='lsd --group-dirs=first'
+alias ll='lsd -lha --group-dirs=first'
+alias llo='lsd -lha --group-dirs=first --permission octal'
 alias fl='ft_lock'
+
+#CUSTOM FUNCTIONS by dsarmien
+function ccf {
+        cc -Wall -Wextra -Werror $1 -o $(basename $1 .c)
+}

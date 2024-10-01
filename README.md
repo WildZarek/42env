@@ -37,7 +37,7 @@ Al finalizar la ejecución del script, en el momento que se nos pide reiniciar e
     - [BAT (batcat)](#batcat)
     - [xclip](#xclip)
     - [LazyGit](#lazygit)
-7. [En proceso...](#en-proceso)
+7. [42env-nr](#42env-nr)
 
 # Software
 
@@ -286,8 +286,8 @@ LazyGit es ideal para quienes prefieren usar la terminal pero quieren una forma 
 | `Ctrl` + `Shift` + `R` | Reinicia el estado de la terminal |
 | `Ctrl` + `Shift` + `G` | Reinicia el estado de la terminal y limpia la pantalla |
 
-# En proceso...
-En el futuro se publicará una versión del proyecto para su instalación en entornos Android bajo Termux.
+# 42env-nr
+Si quieres instalar una versión reducida en un entorno donde no tengas acceso a `sudo`, ve a [42env-nr](https://github.com/WildZarek/42env-nr)
 
 > [!NOTE]
 > Si consideras útil este proyecto, apóyalo dando <strong>★ Star</strong> en el repositorio. ¡Gracias!

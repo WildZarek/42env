@@ -6,9 +6,6 @@ alias bat='bat -l perl --style=numbers'
 alias c='clear'
 alias caa='cat */*'
 alias caf='cat $1'
-alias cca='cc -Wall -Wextra -Werror -o $1 *.c'
-#alias ccf='cc -Wall -Wextra -Werror $1'
-alias ccg='cc -Wall -Wextra -Werror -g -o $1'
 alias nv='nvim.appimage'
 alias cfgi='nv $HOME/.config/nvim/init.vim'
 alias cfgv='nv $HOME/.vimrc'
@@ -30,6 +27,14 @@ alias llo='lsd -lha --group-dirs=first --permission octal'
 alias fl='ft_lock'
 
 #CUSTOM FUNCTIONS by dsarmien
+function cca {
+        cc -Wall -Wextra -Werror *.c -o $(basename $1 .c)
+}
+
 function ccf {
         cc -Wall -Wextra -Werror $1 -o $(basename $1 .c)
+}
+
+function ccg {
+        cc -Wall -Wextra -Werror -g -o $(basename $1 .c)
 }

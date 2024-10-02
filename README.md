@@ -292,6 +292,10 @@ Si quieres instalar una versión reducida en un entorno donde no tengas acceso a
 > [!NOTE]
 > Si consideras útil este proyecto, apóyalo dando <strong>★ Star</strong> en el repositorio. ¡Gracias!
 
+### LICENCIA
+
+This work is published under the terms of **[42 Unlicense](https://github.com/gcamerli/42unlicense)**.
+
 # ¡Happy hacking & coding! 😎
 
 [Volver al índice](#índice)

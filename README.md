@@ -1,11 +1,11 @@
 <div align="center">
   <img src="assets/42_env_banner.png" alt="42 Env Banner" />
   <h1>42 ENVironment Configuration Script</h1>
+  <p>Automatiza la instalación y configuración del entorno básico para empezar a programar en el Cursus de 42.</p>
 </div>
 
-# Descripción
+# Distribuciones Compatibles
 
-Automatiza la instalación y configuración del entorno básico necesario para programar en el Cursus de 42.<br>
 Testeado en las siguientes distribuciones (INFORMACIÓN TEMPORAL):
 
 | Distribución                                                   | Codename      | Estado |

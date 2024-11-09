@@ -335,8 +335,8 @@ fi
 
 if [ ! $(command -v lsd) ]; then
     print_info "Instalando ${COLOR_YELLOW}lsd${COLOR_WHITE}..."
-    LSD_URL="https://github.com/lsd-rs/lsd/releases/download/v1.1.2/lsd-musl_1.1.2_amd64.deb"
-    LSD_DEB="lsd-musl_1.1.2_amd64.deb"
+    LSD_URL="https://github.com/lsd-rs/lsd/releases/download/v1.1.5/lsd-musl_1.1.5_amd64.deb"
+    LSD_DEB="lsd-musl_1.1.5_amd64.deb"
     curl -Lo $LSD_DEB $LSD_URL > /dev/null 2>&1
     sudo dpkg -i $LSD_DEB > /dev/null 2>&1
     rm $LSD_DEB > /dev/null 2>&1

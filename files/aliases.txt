@@ -10,7 +10,6 @@ alias nv='$HOME/snap/bin/nvim'
 alias cfgi='nv $HOME/.config/nvim/init.vim'
 alias cfgv='nv $HOME/.vimrc'
 alias cfgz='nv $HOME/.zshrc'
-alias gcf='gcc -Wall -Wextra -Werror -o $1'
 alias gta='git add $1'
 alias gtaa='git add .'
 alias gtc='git commit -m $1'
@@ -28,13 +27,42 @@ alias fl='ft_lock'
 
 #CUSTOM FUNCTIONS by dsarmien
 function cca {
-        cc -Wall -Wextra -Werror *.c -o $(basename $1 .c)
+    if [ $# -ne 1 ]; then
+        echo "Usage: cca <output_name>"
+        return 1
+    fi
+    local bin_name=$1
+    local c_files=(*.c)
+    local o_files=()
+    for file in $c_files; do
+        obj_file="${file%.c}.o"
+        cc -Wall -Wextra -Werror -c $file -o $obj_file
+        objs+=($obj_file)
+        done
+        cc -Wall -Wextra -Werror ${objs[@]} -o $bin_name
+        rm -f ${objs[@]}
 }
 
 function ccf {
-        cc -Wall -Wextra -Werror $1 -o $(basename $1 .c)
+    if [ $# -ne 1 ]; then
+        echo "Usage: ccf <filename.c>"
+        return 1
+    fi
+	cc -Wall -Wextra -Werror $1 -o $(basename $1 .c)
 }
 
 function ccg {
-        cc -Wall -Wextra -Werror -g -o $(basename $1 .c)
+    if [ $# -ne 1 ]; then
+        echo "Usage: ccg <filename.c>"
+        return 1
+    fi
+    cc -Wall -Wextra -Werror -g $1 -o $(basename $1 .c)
+}
+
+function gcf {
+    if [ $# -ne 1 ]; then
+        echo "Usage: gcf <filename.c>"
+        return 1
+    fi
+    gcc -Wall -Wextra -Werror $1 -o $(basename $1 .c)
 }

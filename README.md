@@ -3,6 +3,7 @@
   <h1>42 ENVironment Configuration Script</h1>
   <p>Automatiza la instalación y configuración del entorno básico para empezar a programar en el Cursus de 42.</p>
 </div>
+<br>
 
 # Distribuciones Compatibles
 

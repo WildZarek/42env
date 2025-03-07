@@ -1,7 +1,9 @@
 
 # CUSTOM ALIASES by dsarmien
 alias 42nt='norminette -R CheckForbiddenSourceHeader'
+alias 42na='42nt *.c *.h'
 alias 42ft='c_formatter_42 $1 > /dev/null 2>&1'
+alias 42pa='$HOME/francinette/tester.sh'
 alias bat='bat -l perl --style=numbers'
 alias c='clear'
 alias caa='cat */*'
@@ -11,15 +13,17 @@ alias cfgi='nv $HOME/.config/nvim/init.vim'
 alias cfgv='nv $HOME/.vimrc'
 alias cfgz='nv $HOME/.zshrc'
 alias gta='git add $1'
-alias gtaa='git add .'
+alias gtaa='git add -A'
 alias gtc='git commit -m $1'
+alias gtel='git branch -D $1'
+alias gter='git push origin -d $1'
 alias gtpu='git push -u origin master'
+alias gtpb='git push --set-upstream origin $1'
 alias gtp='git push'
 alias gts='git status'
-alias gtd='git diff \$1'
+alias gtd='git diff $1'
 alias gtl="git log --format='%h | %ce | %cs | %ch | %s' -n10"
 alias gtt='git tag | sort -V'
-alias la='ls -la */*'
 alias ls='lsd --group-dirs=first'
 alias ll='lsd -lha --group-dirs=first'
 alias llo='lsd -lha --group-dirs=first --permission octal'
@@ -56,7 +60,16 @@ function ccg {
         echo "Usage: ccg <filename.c>"
         return 1
     fi
-    cc -Wall -Wextra -Werror -g $1 -o $(basename $1 .c)
+    cc -Wall -Wextra -Werror -g3 -O0 $1 -o $(basename $1 .c)
+}
+
+function ccga {
+    if [ $# -ne 1 ]; then
+        echo "Usage: ccga <binary_name>"
+        return 1
+    fi
+    cc -Wall -Wextra -Werror -g3 -O0 *.c -o $1
+    gdb -tui $1
 }
 
 function gcf {
@@ -65,4 +78,17 @@ function gcf {
         return 1
     fi
     gcc -Wall -Wextra -Werror $1 -o $(basename $1 .c)
+}
+
+function shr {
+
+    if [ $# -ne 2 ]; then
+        echo "Usage: shr <times> <filename>"
+        return 1
+    fi
+    local times=$1
+    local file_pattern=$2
+    for file in $file_pattern; do
+        shred -n $times -uz $file
+    done
 }

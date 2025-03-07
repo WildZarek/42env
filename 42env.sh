@@ -221,10 +221,11 @@ fi
 
 FONT_DIR="/usr/local/share/fonts"
 FONT_NAME="Hack"
+FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Hack.zip"
 if ! fc-list | grep -q "$FONT_NAME"; then
     print_info "Instalando la fuente ${COLOR_YELLOW}Hack Nerd Font${COLOR_WHITE}..."
-    wget -q https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Hack.zip -O /tmp/Hack.zip
-    sudo unzip -q /tmp/Hack.zip -d $FONT_DIR > /dev/null 2>&1
+    wget -q $FONT_URL -O /tmp/$(basename $FONT_URL)
+    sudo unzip -q /tmp/$(basename $FONT_URL) -d $FONT_DIR > /dev/null 2>&1
     sudo fc-cache -f -v > /dev/null 2>&1
     print_ok
 else
@@ -336,10 +337,9 @@ fi
 if [ ! $(command -v lsd) ]; then
     print_info "Instalando ${COLOR_YELLOW}lsd${COLOR_WHITE}..."
     LSD_URL="https://github.com/lsd-rs/lsd/releases/download/v1.1.5/lsd-musl_1.1.5_amd64.deb"
-    LSD_DEB="lsd-musl_1.1.5_amd64.deb"
-    curl -Lo $LSD_DEB $LSD_URL > /dev/null 2>&1
-    sudo dpkg -i $LSD_DEB > /dev/null 2>&1
-    rm $LSD_DEB > /dev/null 2>&1
+    curl -Lo $(basename $LSD_URL) $LSD_URL > /dev/null 2>&1
+    sudo dpkg -i $(basename $LSD_URL) > /dev/null 2>&1
+    rm $(basename $LSD_URL) > /dev/null 2>&1
     sleep 1
     print_ok
 else
@@ -348,11 +348,10 @@ fi
 
 if [ ! $(command -v batcat) ]; then
     print_info "Instalando ${COLOR_YELLOW}bat${COLOR_WHITE}..."
-    BAT_URL="https://github.com/sharkdp/bat/releases/download/v0.24.0/bat-musl_0.24.0_amd64.deb"
-    BAT_DEB="bat-musl_0.24.0_amd64.deb"
-    curl -Lo $BAT_DEB $BAT_URL > /dev/null 2>&1
-    sudo dpkg -i $BAT_DEB > /dev/null 2>&1
-    rm $BAT_DEB > /dev/null 2>&1
+    BAT_URL="https://github.com/sharkdp/bat/releases/download/v0.25.0/bat-musl_0.25.0_musl-linux-amd64.deb"
+    curl -Lo $(basename $BAT_URL) $BAT_URL > /dev/null 2>&1
+    sudo dpkg -i $(basename $BAT_URL) > /dev/null 2>&1
+    rm $(basename $BAT_URL) > /dev/null 2>&1
     sleep 1
     print_ok
 else
